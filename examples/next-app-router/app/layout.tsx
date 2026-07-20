@@ -1,6 +1,5 @@
 import '@ultraviolet/fonts/fonts.css'
 import '@ultraviolet/ui/styles'
-import '@ultraviolet/icons/styles'
 import '@ultraviolet/themes/global'
 import './globals.css'
 import { ThemeRegistry } from '@ultraviolet/nextjs'

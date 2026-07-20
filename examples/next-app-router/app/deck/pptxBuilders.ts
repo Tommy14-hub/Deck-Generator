@@ -28,11 +28,11 @@ function formatEur(value: number): string {
 
 /** Slide background — dark navy cover vs white content */
 function setDarkBackground(slide: PptxGenJS.Slide) {
-  slide.background({ color: COLORS.neutralBackgroundStronger })
+  slide.background = { color: COLORS.neutralBackgroundStronger }
 }
 
 function setLightBackground(slide: PptxGenJS.Slide) {
-  slide.background({ color: COLORS.neutralBackground })
+  slide.background = { color: COLORS.neutralBackground }
 }
 
 /** Reusable purple header bar across the top of a content slide */

@@ -61,6 +61,7 @@ export function DeckGenerator() {
   const form = useFormState()
   const { state } = form
 
+  const [activeTab, setActiveTab] = useState<string | number>('general')
   const [status, setStatus] = useState<ExportStatus>('idle')
   const [errorMessage, setErrorMessage] = useState<string | undefined>()
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({})
@@ -129,63 +130,63 @@ export function DeckGenerator() {
 
           <Separator />
 
-          <Tabs>
-            <Tabs.Tab id="general" label="1. General Info">
-              <div style={{ paddingTop: 24 }}>
-                <GeneralInfoSection
-                  clientName={state.clientName}
-                  projectTitle={state.projectTitle}
-                  date={state.date}
-                  deckType={state.deckType}
-                  setClientName={form.setClientName}
-                  setProjectTitle={form.setProjectTitle}
-                  setDate={form.setDate}
-                  setDeckType={form.setDeckType}
-                />
-              </div>
-            </Tabs.Tab>
-
-            <Tabs.Tab id="slides" label="2. Slides">
-              <div style={{ paddingTop: 24 }}>
-                <SlideSelectorSection
-                  deckType={state.deckType}
-                  slides={state.slides}
-                  setSlideToggle={form.setSlideToggle}
-                />
-              </div>
-            </Tabs.Tab>
-
+          {/* Tab bar — children are tab buttons only, not panel content */}
+          <Tabs selected={activeTab} onChange={setActiveTab}>
+            <Tabs.Tab value="general">1. General Info</Tabs.Tab>
+            <Tabs.Tab value="slides">2. Slides</Tabs.Tab>
             {(showPricing || showUsage || showRoadmap) && (
-              <Tabs.Tab id="data" label="3. Data">
-                <div style={{ paddingTop: 24 }}>
-                  <Stack gap={5}>
-                    {showPricing && (
-                      <PricingSection
-                        rows={state.pricingRows}
-                        addPricingRow={form.addPricingRow}
-                        updatePricingRow={form.updatePricingRow}
-                        removePricingRow={form.removePricingRow}
-                      />
-                    )}
-                    {(showUsage || showRoadmap) && (
-                      <UsageDataSection
-                        dataPoints={state.usageDataPoints}
-                        addUsagePoint={form.addUsagePoint}
-                        updateUsagePoint={form.updateUsagePoint}
-                        removeUsagePoint={form.removeUsagePoint}
-                        roadmapItems={state.roadmapItems}
-                        updateRoadmapItem={form.updateRoadmapItem}
-                        addRoadmapItem={form.addRoadmapItem}
-                        removeRoadmapItem={form.removeRoadmapItem}
-                        showUsage={showUsage}
-                        showRoadmap={showRoadmap}
-                      />
-                    )}
-                  </Stack>
-                </div>
-              </Tabs.Tab>
+              <Tabs.Tab value="data">3. Data</Tabs.Tab>
             )}
           </Tabs>
+
+          {/* Tab panel content rendered separately to avoid nested <button> */}
+          <div role="tabpanel" style={{ paddingTop: 24 }}>
+            {activeTab === 'general' && (
+              <GeneralInfoSection
+                clientName={state.clientName}
+                projectTitle={state.projectTitle}
+                date={state.date}
+                deckType={state.deckType}
+                setClientName={form.setClientName}
+                setProjectTitle={form.setProjectTitle}
+                setDate={form.setDate}
+                setDeckType={form.setDeckType}
+              />
+            )}
+            {activeTab === 'slides' && (
+              <SlideSelectorSection
+                deckType={state.deckType}
+                slides={state.slides}
+                setSlideToggle={form.setSlideToggle}
+              />
+            )}
+            {activeTab === 'data' && (
+              <Stack gap={5}>
+                {showPricing && (
+                  <PricingSection
+                    rows={state.pricingRows}
+                    addPricingRow={form.addPricingRow}
+                    updatePricingRow={form.updatePricingRow}
+                    removePricingRow={form.removePricingRow}
+                  />
+                )}
+                {(showUsage || showRoadmap) && (
+                  <UsageDataSection
+                    dataPoints={state.usageDataPoints}
+                    addUsagePoint={form.addUsagePoint}
+                    updateUsagePoint={form.updateUsagePoint}
+                    removeUsagePoint={form.removeUsagePoint}
+                    roadmapItems={state.roadmapItems}
+                    updateRoadmapItem={form.updateRoadmapItem}
+                    addRoadmapItem={form.addRoadmapItem}
+                    removeRoadmapItem={form.removeRoadmapItem}
+                    showUsage={showUsage}
+                    showRoadmap={showRoadmap}
+                  />
+                )}
+              </Stack>
+            )}
+          </div>
         </Stack>
       </main>
 
