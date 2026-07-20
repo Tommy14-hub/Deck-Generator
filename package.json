@@ -11,6 +11,7 @@
     "analyse:deps:form": "node ./utils/scripts/analyse-deps.ts packages/form/src/components",
     "analyse:deps:ui": "node ./utils/scripts/analyse-deps.ts packages/ui/src/components",
     "analyse:dist": "node ./utils/scripts/compare/compare-dist-migration.ts",
+    "dev": "turbo run build --filter='./packages/*' --filter=@ultraviolet/nextjs && pnpm --filter @examples/next-app-router dev",
     "build": "turbo run build --filter='./packages/*' ",
     "build:examples": "turbo run build --filter './examples/*' ",
     "build:storybook": "STORYBOOK_ENVIRONMENT=production storybook build",
