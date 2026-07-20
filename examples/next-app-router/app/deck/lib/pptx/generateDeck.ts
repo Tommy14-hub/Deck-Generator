@@ -49,22 +49,23 @@ export async function generateDeck(state: DeckFormState, theme: PptxTheme = defa
 
   pptx.layout = 'LAYOUT_WIDE' // 16:9
 
-  const formattedDate = state.date
-    ? new Date(state.date).toLocaleDateString('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
-    : 'Date non définie'
+  // One date string, formatted once, reused by every slide that shows a date.
+  // An unparseable input must never leak "Invalid Date" onto a client deck.
+  const parsedDate = state.date ? new Date(state.date) : null
+  const formattedDate =
+    parsedDate && !Number.isNaN(parsedDate.getTime())
+      ? parsedDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+      : 'Date non définie'
 
   const deckTypeLabel = state.deckType === 'proposal' ? 'Client Proposal' : 'Internal QBR'
 
-  // 1. Cover slide — always first
+  // 1. Cover slide — always first. The deck type appears once, as the
+  // overline; passing it again as the subtitle would duplicate the label.
   buildCoverSlide(
     pptx,
     {
       title: state.projectTitle || 'Untitled Presentation',
-      subtitle: deckTypeLabel,
+      subtitle: '',
       clientName: state.clientName || 'Valued Client',
       date: formattedDate,
       deckType: deckTypeLabel,

@@ -1,6 +1,7 @@
 /**
- * Hyperscaler Risks slide — 3-column layout for a client proposal.
+ * Hyperscaler Risks slide — 3-column card layout for a client proposal.
  * Columns: Economic Risk | Risk to Innovation | Legal & Sovereignty
+ * Static curated content; geometry comes entirely from the shared layout grid.
  */
 
 import type PptxGenJS from 'pptxgenjs'
@@ -10,6 +11,12 @@ import type { PptxTheme } from '../theme'
 export interface RisksSlideData {
   date: string
 }
+
+const COLUMN_HEADER_H = 0.5
+/** Card body height, sized to the static 5-bullet content (worst column wraps
+ * to 6 lines ≈ 1.9") plus breathing room — NOT the full content band, which
+ * left the bottom half of each card visibly empty. */
+const CARD_BODY_H = 2.5
 
 const COLUMNS: Array<{ title: string; points: string[] }> = [
   {
@@ -50,28 +57,32 @@ export function buildRisksSlide(pptx: PptxGenJS, data: RisksSlideData, theme: Pp
   addSlideHeader(slide, 'Hyperscaler Risks', theme)
   addFooter(slide, data.date, theme)
 
-  const colW = (theme.slide.width - theme.slide.margin * 2 - 0.4) / 3
-  const colY = 0.9
-  const colH = theme.slide.height - colY - 0.5
+  const { gutter, contentTop, cardPadding } = theme.layout
+  const { subtitle, bodySmall } = theme.typography
+
+  const colW = (theme.slide.width - theme.slide.margin * 2 - gutter * 2) / 3
+  const colH = COLUMN_HEADER_H + CARD_BODY_H
 
   COLUMNS.forEach((col, i) => {
-    const x = theme.slide.margin + i * (colW + 0.2)
+    const x = theme.slide.margin + i * (colW + gutter)
 
     // Column header box
     slide.addShape('rect', {
       x,
-      y: colY,
+      y: contentTop,
       w: colW,
-      h: 0.5,
+      h: COLUMN_HEADER_H,
       fill: { color: theme.colors.primary.background },
       line: { color: theme.colors.primary.border, width: 1 },
     })
     slide.addText(col.title, {
       x,
-      y: colY,
+      y: contentTop,
       w: colW,
-      h: 0.5,
-      fontSize: 12,
+      h: COLUMN_HEADER_H,
+      fontSize: subtitle.size - 2,
+      lineSpacingMultiple: subtitle.lineSpacingMultiple,
+      charSpacing: subtitle.charSpacing,
       bold: true,
       color: theme.colors.primary.text,
       fontFace: theme.fonts.heading,
@@ -79,12 +90,12 @@ export function buildRisksSlide(pptx: PptxGenJS, data: RisksSlideData, theme: Pp
       valign: 'middle',
     })
 
-    // Column body
+    // Column body card
     slide.addShape('rect', {
       x,
-      y: colY + 0.5,
+      y: contentTop + COLUMN_HEADER_H,
       w: colW,
-      h: colH - 0.5,
+      h: colH - COLUMN_HEADER_H,
       fill: { color: theme.colors.neutral.backgroundWeak },
       line: { color: theme.colors.neutral.border, width: 1 },
     })
@@ -92,14 +103,20 @@ export function buildRisksSlide(pptx: PptxGenJS, data: RisksSlideData, theme: Pp
     // Bullet points
     const bullets = col.points.map(p => ({
       text: p,
-      options: { bullet: { type: 'bullet' as const }, breakLine: true },
+      options: {
+        bullet: { type: 'bullet' as const },
+        breakLine: true,
+        paraSpaceAfter: 8,
+      },
     }))
     slide.addText(bullets, {
-      x: x + 0.12,
-      y: colY + 0.65,
-      w: colW - 0.24,
-      h: colH - 0.8,
-      fontSize: 10,
+      x: x + cardPadding,
+      y: contentTop + COLUMN_HEADER_H + cardPadding,
+      w: colW - cardPadding * 2,
+      h: colH - COLUMN_HEADER_H - cardPadding * 2,
+      fontSize: bodySmall.size,
+      lineSpacingMultiple: bodySmall.lineSpacingMultiple,
+      charSpacing: bodySmall.charSpacing,
       color: theme.colors.neutral.text,
       fontFace: theme.fonts.body,
       valign: 'top',
