@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": false,
+    "composite": false,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": false,
+    "isolatedDeclarations": false,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "noUncheckedIndexedAccess": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "types": ["vite/client", "@testing-library/jest-dom", "../../global.d.ts", "../../utils.d.ts", "../../expect.d.ts"]
+  },
+  "display": "Ultraviolet UI Base Config",
+  "exclude": ["node_modules", "dist", "build", "coverage"],
+  "extends": "@scaleway/tsconfig"
+}

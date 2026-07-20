@@ -1,0 +1,235 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`separator > renders correctly horizontally 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <hr
+      aria-orientation="horizontal"
+      class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_sentiment_neutral__bu43fbi"
+      style="--bu43fb0: 1px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly vertically 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <hr
+      aria-orientation="vertical"
+      class="styles__bu43fbb styles_direction_vertical__bu43fbd styles_sentiment_neutral__bu43fbi"
+      style="--bu43fb0: 1px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom icon 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="styles__bu43fb1 styles_direction_horizontal__bu43fb2 styles_sentiment_neutral__bu43fb6"
+      role="separator"
+    >
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+      <svg
+        class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <title>
+          RayTopArrowIcon
+        </title>
+        <path
+          clip-rule="evenodd"
+          d="M8 2C8.41421 2 8.75 2.33579 8.75 2.75V11.4393L9.96967 10.2197C10.2626 9.92678 10.7374 9.92678 11.0303 10.2197C11.3232 10.5126 11.3232 10.9874 11.0303 11.2803L8.53033 13.7803C8.23744 14.0732 7.76256 14.0732 7.46967 13.7803L4.96967 11.2803C4.67678 10.9874 4.67678 10.5126 4.96967 10.2197C5.26256 9.92678 5.73744 9.92678 6.03033 10.2197L7.25 11.4393V2.75C7.25 2.33579 7.58579 2 8 2Z"
+          fill-rule="evenodd"
+        />
+        <path
+          d="M10 4C10 5.10457 9.10457 6 8 6C6.89543 6 6 5.10457 6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4Z"
+        />
+      </svg>
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom icon horizontally 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="styles__bu43fb1 styles_direction_horizontal__bu43fb2 styles_sentiment_neutral__bu43fb6"
+      role="separator"
+    >
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+      <svg
+        class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <title>
+          RayTopArrowIcon
+        </title>
+        <path
+          clip-rule="evenodd"
+          d="M8 2C8.41421 2 8.75 2.33579 8.75 2.75V11.4393L9.96967 10.2197C10.2626 9.92678 10.7374 9.92678 11.0303 10.2197C11.3232 10.5126 11.3232 10.9874 11.0303 11.2803L8.53033 13.7803C8.23744 14.0732 7.76256 14.0732 7.46967 13.7803L4.96967 11.2803C4.67678 10.9874 4.67678 10.5126 4.96967 10.2197C5.26256 9.92678 5.73744 9.92678 6.03033 10.2197L7.25 11.4393V2.75C7.25 2.33579 7.58579 2 8 2Z"
+          fill-rule="evenodd"
+        />
+        <path
+          d="M10 4C10 5.10457 9.10457 6 8 6C6.89543 6 6 5.10457 6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4Z"
+        />
+      </svg>
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom icon vertically 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-orientation="vertical"
+      class="styles__bu43fb1 styles_direction_vertical__bu43fb3 styles_sentiment_neutral__bu43fb6"
+      role="separator"
+    >
+      <hr
+        class="styles__bu43fbb styles_direction_vertical__bu43fbd styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+      <svg
+        class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <title>
+          RayTopArrowIcon
+        </title>
+        <path
+          clip-rule="evenodd"
+          d="M8 2C8.41421 2 8.75 2.33579 8.75 2.75V11.4393L9.96967 10.2197C10.2626 9.92678 10.7374 9.92678 11.0303 10.2197C11.3232 10.5126 11.3232 10.9874 11.0303 11.2803L8.53033 13.7803C8.23744 14.0732 7.76256 14.0732 7.46967 13.7803L4.96967 11.2803C4.67678 10.9874 4.67678 10.5126 4.96967 10.2197C5.26256 9.92678 5.73744 9.92678 6.03033 10.2197L7.25 11.4393V2.75C7.25 2.33579 7.58579 2 8 2Z"
+          fill-rule="evenodd"
+        />
+        <path
+          d="M10 4C10 5.10457 9.10457 6 8 6C6.89543 6 6 5.10457 6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4Z"
+        />
+      </svg>
+      <hr
+        class="styles__bu43fbb styles_direction_vertical__bu43fbd styles_hasIcon_true__bu43fbf styles_sentiment_neutral__bu43fbi"
+        style="--bu43fb0: 1px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom sentiment 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <hr
+      aria-orientation="horizontal"
+      class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_sentiment_primary__bu43fbj"
+      style="--bu43fb0: 1px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom sentiment and icon 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="styles__bu43fb1 styles_direction_horizontal__bu43fb2 styles_sentiment_primary__bu43fb7"
+      role="separator"
+    >
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_primary__bu43fbj"
+        style="--bu43fb0: 1px;"
+      />
+      <svg
+        class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <title>
+          RayTopArrowIcon
+        </title>
+        <path
+          clip-rule="evenodd"
+          d="M8 2C8.41421 2 8.75 2.33579 8.75 2.75V11.4393L9.96967 10.2197C10.2626 9.92678 10.7374 9.92678 11.0303 10.2197C11.3232 10.5126 11.3232 10.9874 11.0303 11.2803L8.53033 13.7803C8.23744 14.0732 7.76256 14.0732 7.46967 13.7803L4.96967 11.2803C4.67678 10.9874 4.67678 10.5126 4.96967 10.2197C5.26256 9.92678 5.73744 9.92678 6.03033 10.2197L7.25 11.4393V2.75C7.25 2.33579 7.58579 2 8 2Z"
+          fill-rule="evenodd"
+        />
+        <path
+          d="M10 4C10 5.10457 9.10457 6 8 6C6.89543 6 6 5.10457 6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4Z"
+        />
+      </svg>
+      <hr
+        class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_hasIcon_true__bu43fbf styles_sentiment_primary__bu43fbj"
+        style="--bu43fb0: 1px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with custom thickness 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <hr
+      aria-orientation="horizontal"
+      class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_sentiment_neutral__bu43fbi"
+      style="--bu43fb0: 3px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`separator > renders correctly with default props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <hr
+      aria-orientation="horizontal"
+      class="styles__bu43fbb styles_direction_horizontal__bu43fbc styles_sentiment_neutral__bu43fbi"
+      style="--bu43fb0: 1px;"
+    />
+  </div>
+</DocumentFragment>
+`;

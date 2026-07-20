@@ -1,0 +1,21 @@
+import type { StoryFn } from '@storybook/react-vite'
+import { useState } from 'react'
+import { Pagination } from '..'
+
+export const Controlled: StoryFn = props => {
+  const [page, setPage] = useState(1)
+
+  return (
+    <>
+      Current page : {page} <Pagination {...props} onChange={setPage} page={page} pageCount={10} />
+    </>
+  )
+}
+
+Controlled.parameters = {
+  docs: {
+    description: {
+      story: 'Define number of elements to show per page',
+    },
+  },
+}

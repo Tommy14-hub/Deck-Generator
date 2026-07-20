@@ -1,0 +1,73 @@
+import { theme } from '@ultraviolet/themes'
+import { style } from '@vanilla-extract/css'
+import {
+  comboboxCreate,
+  dropdown,
+  dropdownCheckbox,
+  dropdownCheckboxGroup,
+  dropdownContainer,
+  dropdownContainerUnGrouped,
+  dropdownEmptyState,
+  dropdownGroup,
+  dropdownGroupSelectable,
+  dropdownGroupWrapper,
+  dropdownInfo,
+  dropdownInfoContainer,
+  dropdownInfoTextItem,
+  dropdownItem,
+  dropdownItemBase,
+  dropdownLoadMore,
+  emptyStateGroupStyle,
+  footer,
+  searchBar,
+  optionalInfoPadding,
+} from './components/Dropdown/dropdown.css'
+import {
+  multiselectStack,
+  placeholder,
+  plusTag,
+  selectBar,
+  selectBarBase,
+  selectBarTags,
+  selectbarState,
+  selectedValues,
+} from './components/SelectBar/selectBar.css'
+
+const container = style({ width: '100%' })
+const helper = style({
+  display: 'block',
+  paddingTop: theme.space['0.5'],
+})
+
+export const selectInputStyle = {
+  container,
+  helper,
+  dropdown,
+  dropdownContainer,
+  dropdownContainerUnGrouped,
+  dropdownGroup,
+  dropdownGroupSelectable,
+  dropdownGroupWrapper,
+  emptyStateGroupStyle,
+  dropdownItem,
+  dropdownItemBase,
+  footer,
+  dropdownCheckbox,
+  dropdownCheckboxGroup,
+  dropdownEmptyState,
+  dropdownLoadMore,
+  dropdownInfo,
+  dropdownInfoContainer,
+  dropdownInfoTextItem,
+  comboboxCreate,
+  selectbarState,
+  placeholder,
+  selectBarBase,
+  selectBar,
+  selectBarTags,
+  selectedValues,
+  plusTag,
+  multiselectStack,
+  searchBar,
+  optionalInfoPadding,
+}

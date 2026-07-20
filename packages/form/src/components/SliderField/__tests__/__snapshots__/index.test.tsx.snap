@@ -1,0 +1,546 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sliderField > should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u3p"
+        data-options="false"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u6v"
+        >
+          <div
+            class="uv_toi52u0 uv_toi52u2j uv_toi52u6p"
+          >
+            <span
+              class="uv_a5ifr1h uv_a5ifr1i uv_a5ifr1k uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owk uv_m4c9ow1a uv_m4c9ow32"
+              data-testid="slider-value"
+              style="--uv_qabug40: right;"
+            >
+              0
+            </span>
+          </div>
+          <div
+            class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u61"
+            style="--uv_4k0ekn0: 100%;"
+          >
+            <input
+              aria-label="test"
+              class="uv_a5ifr1p uv_a5ifr1q uv_a5ifr1b uv_a5ifr1c uv_a5ifr1f"
+              data-direction="column"
+              data-error="false"
+              id="_r_1_"
+              max="100"
+              min="0"
+              name="test"
+              step="1"
+              style="--uv_a5ifr12: calc(0% - 0px); --uv_a5ifr11: #ffffff; background-size: 0% 100%;"
+              tabindex="0"
+              type="range"
+              value="0"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`sliderField > should render correctly disabled 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        aria-label="Slider Input"
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u3p"
+        data-options="false"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u6v"
+        >
+          <div
+            class="uv_toi52u0 uv_toi52u2j uv_toi52u6p"
+          >
+            <span
+              class="uv_a5ifr1h uv_a5ifr1i uv_a5ifr1k uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owk uv_m4c9ow1a uv_m4c9ow32"
+              data-testid="slider-value"
+              style="--uv_qabug40: right;"
+            >
+              0
+            </span>
+          </div>
+          <div
+            class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u61"
+            style="--uv_4k0ekn0: 100%;"
+          >
+            <input
+              aria-disabled="true"
+              aria-label="Slider Input"
+              class="uv_a5ifr1p uv_a5ifr1q uv_a5ifr1t uv_a5ifr1b uv_a5ifr1d uv_a5ifr1f"
+              data-direction="column"
+              data-error="false"
+              disabled=""
+              id="_r_u_"
+              max="100"
+              min="0"
+              name="test"
+              step="1"
+              style="--uv_a5ifr12: calc(0% - 0px); --uv_a5ifr11: #ffffff; background-size: 0% 100%;"
+              tabindex="0"
+              type="range"
+              value="0"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`sliderField > should render correctly with possible values 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u41"
+        data-options="true"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u6v"
+        >
+          <div
+            class="uv_toi52u0 uv_toi52u2j uv_toi52u6p"
+          >
+            <span
+              class="uv_a5ifr1h uv_a5ifr1i uv_a5ifr1k uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owk uv_m4c9ow1a uv_m4c9ow32"
+              data-testid="slider-value"
+              style="--uv_qabug40: right;"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u61"
+            style="--uv_4k0ekn0: 100%;"
+          >
+            <input
+              aria-label="test"
+              class="uv_a5ifr1p uv_a5ifr1q uv_a5ifr1b uv_a5ifr1c uv_a5ifr1f"
+              data-direction="column"
+              data-error="false"
+              id="_r_5_"
+              max="6"
+              min="0"
+              name="test"
+              step="1"
+              style="--uv_a5ifr12: calc(0% - 0px); --uv_a5ifr11: #ffffff; background-size: 0% 100%;"
+              tabindex="0"
+              type="range"
+              value="0"
+            />
+            <datalist
+              class="uv_a5ifr16"
+              data-double="false"
+            >
+              <span
+                class="uv_a5ifr18 uv_a5ifr19"
+                data-element-left="true"
+                data-element-right="false"
+                data-value="0"
+                style="--uv_a5ifr13: calc(0% - 0px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  1Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18"
+                data-element-left="false"
+                data-element-right="false"
+                data-value="1"
+                style="--uv_a5ifr13: calc(16.666666666666668% - 2.666666666666667px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  3Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18"
+                data-element-left="false"
+                data-element-right="false"
+                data-value="2"
+                style="--uv_a5ifr13: calc(33.333333333333336% - 5.333333333333334px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  5Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18"
+                data-element-left="false"
+                data-element-right="false"
+                data-value="3"
+                style="--uv_a5ifr13: calc(50% - 8px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  10Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18"
+                data-element-left="false"
+                data-element-right="false"
+                data-value="4"
+                style="--uv_a5ifr13: calc(66.66666666666667% - 10.666666666666668px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  50Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18"
+                data-element-left="false"
+                data-element-right="false"
+                data-value="5"
+                style="--uv_a5ifr13: calc(83.33333333333333% - 13.333333333333332px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  100Mb
+                </p>
+              </span>
+              <span
+                class="uv_a5ifr18 uv_a5ifr1a"
+                data-element-left="false"
+                data-element-right="true"
+                data-value="6"
+                style="--uv_a5ifr13: calc(100% - 16px + 8px);"
+              >
+                <p
+                  class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                >
+                  500Mb
+                </p>
+              </span>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`sliderField > should render correctly with possible values and double 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_a5ifr14 uv_toi52u0 uv_toi52u2d uv_toi52u41"
+        data-double="true"
+        data-options="true"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u6v"
+        >
+          <div
+            class="uv_toi52u0 uv_toi52u2d uv_toi52u3p"
+            style="--uv_4k0ekn0: 100%;"
+          >
+            <div
+              class="uv_toi52u0 uv_toi52u2j uv_toi52u77"
+            >
+              <span
+                class="uv_a5ifr1h uv_a5ifr1j uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owk uv_m4c9ow1a uv_m4c9ow32"
+                data-testid="value-left"
+                style="--uv_qabug40: right;"
+              >
+                1
+              </span>
+              <span
+                class="uv_a5ifr1h uv_a5ifr1j uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owk uv_m4c9ow1a uv_m4c9ow32"
+                data-testid="value-right"
+                style="--uv_qabug40: right;"
+              >
+                500
+              </span>
+            </div>
+            <div
+              class="uv_a5ifr1v"
+            >
+              <div
+                class="uv_a5ifr1w"
+              >
+                <div
+                  aria-disabled="false"
+                  class="uv_a5ifr1x"
+                  data-error="false"
+                  style="left: 0%; right: 0%;"
+                />
+              </div>
+              <input
+                aria-label="test"
+                class="uv_a5ifr1l uv_a5ifr1m uv_a5ifr1b uv_a5ifr1c uv_a5ifr1e uv_a5ifr1g"
+                data-direction="column"
+                data-testid="handle-left"
+                id="_r_g_"
+                max="6"
+                min="0"
+                name="test"
+                step="1"
+                style="--uv_a5ifr12: calc(0% - 0px); --uv_a5ifr11: #ffffff;"
+                type="range"
+                value="0"
+              />
+              <input
+                aria-label="test"
+                class="uv_a5ifr1l uv_a5ifr1m uv_a5ifr1b uv_a5ifr1c uv_a5ifr1e uv_a5ifr1g"
+                data-direction="column"
+                data-testid="handle-right"
+                id="_r_g_"
+                max="6"
+                min="0"
+                name="test"
+                step="1"
+                style="--uv_a5ifr12: calc(100% - 16px); --uv_a5ifr11: #ffffff;"
+                type="range"
+                value="6"
+              />
+              <datalist
+                class="uv_a5ifr16 uv_a5ifr17"
+                data-double="true"
+              >
+                <span
+                  class="uv_a5ifr18 uv_a5ifr19"
+                  data-element-left="true"
+                  data-element-right="false"
+                  data-value="0"
+                  style="--uv_a5ifr13: calc(0% - 0px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owc uv_m4c9owt uv_m4c9ow1a uv_m4c9ow2e"
+                  >
+                    1Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18"
+                  data-element-left="false"
+                  data-element-right="false"
+                  data-value="1"
+                  style="--uv_a5ifr13: calc(16.666666666666668% - 2.666666666666667px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                  >
+                    3Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18"
+                  data-element-left="false"
+                  data-element-right="false"
+                  data-value="2"
+                  style="--uv_a5ifr13: calc(33.333333333333336% - 5.333333333333334px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                  >
+                    5Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18"
+                  data-element-left="false"
+                  data-element-right="false"
+                  data-value="3"
+                  style="--uv_a5ifr13: calc(50% - 8px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                  >
+                    10Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18"
+                  data-element-left="false"
+                  data-element-right="false"
+                  data-value="4"
+                  style="--uv_a5ifr13: calc(66.66666666666667% - 10.666666666666668px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                  >
+                    50Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18"
+                  data-element-left="false"
+                  data-element-right="false"
+                  data-value="5"
+                  style="--uv_a5ifr13: calc(83.33333333333333% - 13.333333333333332px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9owp uv_m4c9ow1a uv_m4c9ow32"
+                  >
+                    100Mb
+                  </p>
+                </span>
+                <span
+                  class="uv_a5ifr18 uv_a5ifr1a"
+                  data-element-left="false"
+                  data-element-right="true"
+                  data-value="6"
+                  style="--uv_a5ifr13: calc(100% - 16px + 8px);"
+                >
+                  <p
+                    class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owc uv_m4c9owt uv_m4c9ow1a uv_m4c9ow2e"
+                  >
+                    500Mb
+                  </p>
+                </span>
+              </datalist>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`sliderField > should trigger events correctly 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u3p"
+        data-options="false"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u6v"
+        >
+          <div
+            class="uv_toi52u0 uv_toi52ud uv_toi52u2j uv_toi52u77"
+          >
+            <div
+              class="uv_toi52u0 uv_toi52uv uv_toi52u2j uv_toi52u5j"
+            >
+              <label
+                class="uv_17td3g92 uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9own uv_m4c9ow1a uv_m4c9ow32"
+                for="_r_12_"
+              >
+                Test
+              </label>
+              <span
+                class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9ow9 uv_m4c9own uv_m4c9ow1a uv_m4c9ow2m"
+              >
+                *
+              </span>
+            </div>
+            <div
+              class="uv_a5ifr110 uv_toi52u0 uv_toi52u2d uv_toi52u5j"
+            >
+              <div>
+                <div
+                  class="uv_1ce7gb6k uv_1ce7gb6n uv_1ce7gb6o"
+                  data-controls="false"
+                  data-disabled="false"
+                  data-error="false"
+                  data-size="small"
+                  data-success="false"
+                  data-unit="false"
+                >
+                  <div
+                    class="uv_1ce7gb63 uv_1ce7gb64 uv_x6hyh50 uv_x6hyh5d uv_x6hyh561"
+                    style="--uv_3mg8xe0: 1fr auto; --uv_3mg8xe1: 1fr auto; --uv_3mg8xe2: 1fr auto; --uv_3mg8xe3: 1fr auto; --uv_3mg8xe4: 1fr auto; --uv_3mg8xe5: 1fr auto;"
+                  >
+                    <input
+                      aria-label="input"
+                      class="uv_1ce7gb6c uv_1ce7gb6d uv_1ce7gb6i uv_1ce7gb6j"
+                      data-testid="slider-input"
+                      id="_r_15_"
+                      inputmode="numeric"
+                      max="10"
+                      min="0"
+                      placeholder=""
+                      step="1"
+                      type="number"
+                      value="0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="uv_toi52u0 uv_toi52u2j uv_toi52u6p"
+          />
+          <div
+            class="uv_toi52u0 uv_toi52u2d uv_toi52u3p uv_toi52u61"
+            style="--uv_4k0ekn0: 100%;"
+          >
+            <input
+              aria-label="test"
+              class="uv_a5ifr1p uv_a5ifr1q uv_a5ifr1b uv_a5ifr1c uv_a5ifr1f"
+              data-direction="column"
+              data-error="false"
+              id="_r_12_"
+              max="10"
+              min="0"
+              name="test"
+              step="1"
+              style="--uv_a5ifr12: calc(0% - 0px); --uv_a5ifr11: #ffffff; background-size: 0% 100%;"
+              tabindex="0"
+              type="range"
+              value="0"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`infiniteScroll > renders correctly  1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      role="feed"
+      style="height: 2.5rem;"
+    />
+  </div>
+</DocumentFragment>
+`;

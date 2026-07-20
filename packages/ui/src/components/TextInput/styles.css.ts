@@ -1,0 +1,159 @@
+import { theme } from '@ultraviolet/themes'
+import { createVar, style, styleVariants } from '@vanilla-extract/css'
+import { TEXTINPUT_SIZE_HEIGHT } from './constants'
+import { searchInputStyle } from '../SearchInput/styles.css'
+
+export const hasFocusVar = createVar()
+
+const basicPrefix = style({
+  padding: theme.space['2'],
+  borderRight: '1px solid',
+  borderColor: 'inherit',
+  height: '100%',
+
+  selectors: {
+    '&[data-size="small"]': {
+      padding: theme.space['1'],
+    },
+    [`${searchInputStyle.searchInput} &`]: {
+      border: 'none',
+      padding: `0 ${theme.space[1]} 0 ${theme.space[2]}`,
+    },
+    [`${searchInputStyle.searchInput} &[data-size="small"]`]: {
+      paddingLeft: theme.space[1.5],
+    },
+  },
+})
+
+const stateStack = style({
+  padding: `0 ${theme.space['2']}`,
+})
+
+const basicSuffix = style({
+  padding: `0 ${theme.space['2']}`,
+  borderLeft: '1px solid',
+  borderColor: 'inherit',
+  height: '100%',
+  selectors: {
+    [`${searchInputStyle.searchInput} &`]: {
+      border: 'none',
+    },
+  },
+})
+
+const ctaSuffix = style({
+  padding: `0 ${theme.space['1']}`,
+  borderLeft: '1px solid',
+  borderColor: 'inherit',
+  height: '100%',
+})
+
+const inputWrapperSizes = styleVariants(
+  Object.keys(TEXTINPUT_SIZE_HEIGHT).reduce(
+    (acc, size) => ({
+      ...acc,
+      [size]: {
+        height: theme.sizing[TEXTINPUT_SIZE_HEIGHT[size as keyof typeof TEXTINPUT_SIZE_HEIGHT]],
+      },
+    }),
+    {} as Record<keyof typeof TEXTINPUT_SIZE_HEIGHT, { height: string }>,
+  ),
+)
+
+const inputWrapper = style({
+  alignItems: 'center',
+  background: theme.colors.neutral.background,
+  border: `1px solid ${theme.colors.neutral.border}`,
+  borderRadius: theme.radii.default,
+  display: 'flex',
+  flexDirection: 'row',
+
+  selectors: {
+    '&:not([data-disabled="true"]):not([data-readonly="true"]):hover': {
+      borderColor: theme.colors.primary.border,
+    },
+    "&[data-error='true']": {
+      borderColor: theme.colors.danger.border,
+    },
+    '&:focus-within': {
+      border: `1px solid ${theme.colors.primary.border}`,
+      boxShadow: theme.shadows.focusPrimary,
+    },
+    "&[data-readonly='true']": {
+      background: theme.colors.neutral.backgroundWeak,
+      borderColor: theme.colors.neutral.border,
+    },
+    "&[data-success='true']": {
+      borderColor: theme.colors.success.border,
+    },
+    "&[data-error='true']:focus-within": {
+      boxShadow: theme.shadows.focusDanger,
+      borderColor: theme.colors.danger.border,
+    },
+    "&[data-success='true']:focus-within": {
+      boxShadow: theme.shadows.focusSuccess,
+      borderColor: theme.colors.success.border,
+    },
+    '&:not([data-disabled="true"]):not([data-readonly="true"])[data-success="true"]:hover': {
+      borderColor: theme.colors.success.borderHover,
+    },
+    '&:not([data-disabled="true"]):not([data-readonly="true"])[data-error="true"]:hover': {
+      borderColor: theme.colors.danger.borderHover,
+    },
+
+    "&[data-disabled='true']": {
+      background: theme.colors.neutral.backgroundDisabled,
+      borderColor: theme.colors.neutral.borderDisabled,
+    },
+  },
+  width: '100%',
+})
+
+const input = style({
+  flex: 1,
+  border: 'none',
+  outline: 'none',
+  height: '100%',
+  width: '100%',
+  paddingLeft: theme.space['2'],
+  background: 'transparent',
+  fontSize: theme.typography.bodySmall.fontSize,
+  color: theme.colors.neutral.text,
+  selectors: {
+    '&[data-size="large"]': {
+      fontSize: theme.typography.body.fontSize,
+    },
+    '&[data-size="small"]': {
+      paddingLeft: theme.space['1'],
+    },
+    '&:disabled': {
+      cursor: 'not-allowed',
+      userSelect: 'none',
+    },
+    '&:focus': {
+      outline: 'none',
+    },
+    [`${searchInputStyle.searchInput} &`]: {
+      padding: 0,
+    },
+    [`${inputWrapper} > &::placeholder`]: {
+      color: theme.colors.neutral.textWeak,
+    },
+    [`${inputWrapper}[data-disabled='true'] > &`]: {
+      color: theme.colors.neutral.textDisabled,
+    },
+    [`${inputWrapper}[data-disabled='true'] > &::placeholder`]: {
+      color: theme.colors.neutral.textWeakDisabled,
+    },
+  },
+})
+
+export const textInputStyle = {
+  basicPrefix,
+  stateStack,
+  basicSuffix,
+  ctaSuffix,
+  inputWrapper,
+  inputWrapperSizes,
+  input,
+}

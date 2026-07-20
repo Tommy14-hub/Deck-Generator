@@ -1,0 +1,30 @@
+.switchButton {
+  margin: auto;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+.loginContainer {
+  margin: 5vh 10vw;
+  background: var(--color-primary-background);
+  padding: var(--space-4);
+}
+
+.loginInput {
+  padding: var(--space-1-5) var(--space-5);
+  width: 100%;
+}
+
+.signupContainer {
+  margin: 5vh 10vw;
+  background: var(--color-secondary-background);
+  padding: var(--space-4);
+}
+
+.signupInput {
+  padding: var(--space-1-5) var(--space-0);
+  width: 100%;
+}

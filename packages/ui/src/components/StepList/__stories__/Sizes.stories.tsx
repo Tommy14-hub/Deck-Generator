@@ -1,0 +1,25 @@
+import { StepList } from '..'
+import type { Sizes as SizesType } from '../Item'
+import { Template } from './Template.stories'
+
+export const Sizes = Template.bind({})
+
+Sizes.parameters = {
+  docs: {
+    story: {
+      description: 'Set `size` using size property.',
+    },
+  },
+}
+
+Sizes.decorators = [
+  () => (
+    <StepList>
+      {['small', 'medium'].map((size, index) => (
+        <StepList.Item bulletContent={(index + 1).toString()} key={size} size={size as SizesType}>
+          {size}
+        </StepList.Item>
+      ))}
+    </StepList>
+  ),
+]

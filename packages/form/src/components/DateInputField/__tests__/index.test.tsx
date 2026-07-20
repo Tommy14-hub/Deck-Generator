@@ -1,0 +1,94 @@
+import { screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { describe, expect, vi, it } from 'vitest'
+import { DateInputField } from '..'
+import { renderWithForm } from '../../../__tests__/helpers'
+
+describe('dateInputField', () => {
+  it('should render correctly', () => {
+    const { asFragment } = renderWithForm(<DateInputField name="test" />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should render correctly disabled', () => {
+    const { asFragment } = renderWithForm(<DateInputField disabled name="test" />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should trigger events', async () => {
+    const onBlur = vi.fn()
+    const onChange = vi.fn()
+    const { asFragment, resultForm } = renderWithForm(
+      <DateInputField name="test" onBlur={onBlur} onChange={onChange} placeholder="YYYY-MM-DD" />,
+      {
+        defaultValues: {
+          test: new Date('2022-09-01'),
+        },
+      },
+    )
+
+    const input = screen.getByPlaceholderText<HTMLInputElement>('YYYY-MM-DD')
+    await userEvent.click(input)
+    await userEvent.click(screen.getByText('15'))
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledOnce()
+    })
+
+    expect(resultForm.current.getValues('test')).toStrictEqual(new Date('2022-09-15T00:00:00.000Z'))
+
+    expect(asFragment()).toMatchSnapshot()
+  }, 10_000)
+
+  it('should test range', async () => {
+    const onBlur = vi.fn()
+    const onChange = vi.fn()
+    const { asFragment, resultForm } = renderWithForm(
+      <DateInputField name="test" onBlur={onBlur} onChange={onChange} placeholder="YYYY-MM-DD" selectsRange />,
+      {
+        defaultValues: {
+          test: [new Date('2022-09-01'), new Date('2022-09-06')],
+        },
+      },
+    )
+
+    const input = screen.getByPlaceholderText<HTMLInputElement>('YYYY-MM-DD')
+    await userEvent.click(input)
+    await userEvent.click(screen.getByText('18'))
+    await userEvent.click(screen.getByText('15'))
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledTimes(2)
+    })
+
+    expect(resultForm.current.getValues('test')).toStrictEqual([
+      new Date('2022-09-15T00:00:00.000Z'),
+      new Date('2022-09-18T00:00:00.000Z'),
+    ])
+
+    expect(asFragment()).toMatchSnapshot()
+  }, 10_000)
+
+  it('should clear field', async () => {
+    const onBlur = vi.fn()
+    const onChange = vi.fn()
+    const { asFragment, resultForm } = renderWithForm(
+      <DateInputField clearable name="test" onBlur={onBlur} onChange={onChange} placeholder="YYYY-MM-DD" />,
+      {
+        defaultValues: {
+          test: new Date('2022-09-01'),
+        },
+      },
+    )
+
+    const clearButton = screen.getByRole('button', { name: 'clear value' })
+    await userEvent.click(clearButton)
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledOnce()
+    })
+
+    expect(resultForm.current.getValues('test')).toBeNull()
+
+    expect(asFragment()).toMatchSnapshot()
+  }, 10_000)
+})

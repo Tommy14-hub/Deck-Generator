@@ -1,0 +1,41 @@
+import type { StoryFn } from '@storybook/react-vite'
+import { Table } from '..'
+import { columns, data } from './resources'
+
+export const Spanning: StoryFn = args => (
+  <Table
+    {...args}
+    columns={[
+      ...columns,
+      {
+        label: 'Screenwriter',
+      },
+    ]}
+  >
+    <Table.Body>
+      {data.map((movie, index) => (
+        <Table.Row id={movie.id} key={movie.id}>
+          <Table.Cell>{movie.name}</Table.Cell>
+          <Table.Cell>{movie.releaseYear}</Table.Cell>
+          {index % 3 === 0 ? (
+            <Table.Cell rowSpan={3} sentiment="warning">
+              {movie.trilogy}
+            </Table.Cell>
+          ) : null}
+          <Table.Cell colSpan={movie.director === movie.storyBy ? 2 : 1} sentiment="success">
+            {movie.director}
+          </Table.Cell>
+          {movie.director === movie.storyBy ? null : <Table.Cell sentiment="info">{movie.storyBy}</Table.Cell>}
+        </Table.Row>
+      ))}
+    </Table.Body>
+  </Table>
+)
+
+Spanning.parameters = {
+  docs: {
+    description: {
+      story: 'You can use the html table `colSpan` and `rowSpan` property on a Cell.',
+    },
+  },
+}

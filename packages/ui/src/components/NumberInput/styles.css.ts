@@ -1,0 +1,276 @@
+import { theme } from '@ultraviolet/themes'
+import { styleVariants } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
+import { SIZES } from './constant'
+
+const sideContainer = styleVariants({
+  large: {
+    height: theme.sizing[SIZES.large],
+    padding: `${theme.space['0.5']} ${theme.space['1']}`,
+  },
+  medium: {
+    height: theme.sizing[SIZES.medium],
+    padding: `${theme.space['0.25']} ${theme.space['1']}`,
+  },
+  small: {
+    height: theme.sizing[SIZES.small],
+    padding: `${theme.space['0.25']} ${theme.space['1']}`,
+  },
+})
+
+const inputContainer = recipe({
+  base: {
+    background: 'inherit',
+    borderColor: 'inherit',
+    borderStyle: 'solid',
+    borderWidth: '0 1px 0 1px',
+    width: '100%',
+  },
+  defaultVariants: {
+    controls: true,
+  },
+  variants: {
+    controls: {
+      false: {
+        borderWidth: 0,
+      },
+    },
+  },
+})
+
+const unit = recipe({
+  base: {
+    alignItems: 'center',
+    display: 'flex',
+    padding: theme.space[1],
+    borderBlockWidth: 1,
+    borderColor: 'inherit',
+    borderBlockStyle: 'solid',
+  },
+  defaultVariants: {
+    disabled: false,
+    readOnly: false,
+    size: 'large',
+    controls: true,
+  },
+  variants: {
+    disabled: {
+      true: {
+        background: theme.colors.neutral.backgroundDisabled,
+        cursor: 'not-allowed',
+        userSelect: 'none',
+        borderBlock: `1px solid ${theme.colors.neutral.borderDisabled}`,
+      },
+    },
+    readOnly: {
+      true: {
+        background: theme.colors.neutral.backgroundWeak,
+        borderBlock: `1px solid ${theme.colors.neutral.border}`,
+      },
+    },
+    size: {
+      large: {
+        fontSize: theme.typography.body.fontSize,
+        height: theme.sizing[SIZES.large],
+      },
+
+      medium: {
+        fontSize: theme.typography.bodySmall.fontSize,
+        height: theme.sizing[SIZES.medium],
+      },
+      small: {
+        fontSize: theme.typography.bodySmall.fontSize,
+        height: theme.sizing[SIZES.small],
+      },
+    },
+    controls: {
+      false: {
+        borderRadius: `0 ${theme.radii.default} ${theme.radii.default} 0`,
+        borderRightWidth: 1,
+        borderRightStyle: 'solid',
+      },
+    },
+  },
+})
+
+const numberinput = recipe({
+  base: {
+    background: 'none',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'inherit',
+    color: theme.colors.neutral.text,
+    fontFamily: theme.typography.bodySmall.fontFamily,
+    fontSize: theme.typography.bodySmall.fontSize,
+    fontWeight: theme.typography.bodySmall.fontWeight,
+    lineHeight: theme.typography.bodySmall.lineHeight,
+    outline: 'none',
+    padding: theme.space[1],
+    selectors: {
+      '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+        WebkitAppearance: 'none',
+        margin: 0,
+      },
+      '&': {
+        appearance: 'textarea',
+        MozAppearance: 'textfield',
+      },
+      '&:read-only': {
+        color: theme.colors.neutral.text,
+        background: theme.colors.neutral.backgroundWeak,
+        borderBlock: `1px solid ${theme.colors.neutral.border}`,
+      },
+      '&:disabled': {
+        color: theme.colors.neutral.textDisabled,
+        background: theme.colors.neutral.backgroundDisabled,
+        cursor: 'not-allowed',
+        borderBlock: `1px solid ${theme.colors.neutral.borderDisabled}`,
+      },
+      '&::placeholder': {
+        color: theme.colors.neutral.textWeak,
+        fontSize: theme.typography.body.fontSize,
+      },
+      '&:focus': {
+        outline: 'none',
+      },
+      '&:has(input:out-of-range)': {
+        borderBlock: `1px solid ${theme.colors.danger.border}`,
+      },
+    },
+    textAlign: 'center',
+    width: '100%',
+  },
+  defaultVariants: {
+    controls: true,
+    hasUnit: false,
+    size: 'large',
+  },
+  variants: {
+    controls: {
+      false: {
+        textAlign: 'left',
+        borderRadius: `${theme.radii.default} 0 0 ${theme.radii.default}`,
+      },
+      true: {
+        borderInline: 'none',
+      },
+    },
+    hasUnit: {
+      true: {
+        padding: `${theme.space['1']} 0 ${theme.space['1']} ${theme.space['1']}`,
+        textAlign: 'left',
+        borderRightWidth: 0,
+      },
+    },
+    size: {
+      large: {
+        fontFamily: theme.typography.body.fontFamily,
+        fontSize: theme.typography.body.fontSize,
+        fontWeight: theme.typography.body.fontWeight,
+        height: theme.sizing[SIZES.large],
+        lineHeight: theme.typography.body.lineHeight,
+      },
+      medium: {
+        height: theme.sizing[SIZES.medium],
+      },
+      small: {
+        height: theme.sizing[SIZES.small],
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      variants: { controls: false, hasUnit: false },
+      style: { borderRadius: theme.radii.default },
+    },
+  ],
+})
+
+const container = recipe({
+  base: {
+    alignItems: 'center',
+    borderRadius: theme.radii.default,
+    border: `1px solid ${theme.colors.neutral.border}`,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    background: theme.colors.neutral.background,
+    selectors: {
+      '&:focus-within': {
+        borderColor: theme.colors.primary.borderHover,
+        boxShadow: theme.shadows.focusPrimary,
+      },
+      '&:hover': {
+        border: `1px solid ${theme.colors.primary.borderHover}`,
+      },
+      '&:has(input:out-of-range), &:has(:user-invalid:focus)': {
+        boxShadow: theme.shadows.focusDanger,
+      },
+      '&:has(input:out-of-range:hover), &:has(:user-invalid:hover)': {
+        borderColor: theme.colors.danger.borderHover,
+      },
+      '&:has(input:out-of-range), &:has(:user-invalid)': {
+        borderColor: theme.colors.danger.border,
+      },
+      '&[data-controls="false"]': {
+        borderWidth: 0,
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'large',
+    state: 'default',
+  },
+  variants: {
+    size: {
+      large: {
+        height: theme.sizing[SIZES.large],
+      },
+
+      medium: {
+        height: theme.sizing[SIZES.medium],
+      },
+      small: {
+        height: theme.sizing[SIZES.small],
+      },
+    },
+    state: {
+      default: {},
+      disabled: {
+        background: theme.colors.neutral.backgroundDisabled,
+        borderColor: theme.colors.neutral.borderDisabled,
+        cursor: 'not-allowed',
+        selectors: {
+          '&:hover': {
+            borderColor: theme.colors.neutral.borderDisabled,
+          },
+        },
+      },
+      error: { borderColor: theme.colors.danger.border },
+      readOnly: {
+        background: theme.colors.neutral.backgroundWeak,
+        borderColor: theme.colors.neutral.border,
+        cursor: 'not-allowed',
+        selectors: {
+          '&:focus-within': {
+            borderColor: theme.colors.neutral.border,
+          },
+          '&:hover': {
+            borderColor: theme.colors.neutral.border,
+          },
+        },
+      },
+      success: {
+        borderColor: theme.colors.success.border,
+      },
+    },
+  },
+})
+
+export const numberInputStyle = {
+  sideContainer,
+  inputContainer,
+  unit,
+  numberinput,
+  container,
+}

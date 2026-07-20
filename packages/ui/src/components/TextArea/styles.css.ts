@@ -1,0 +1,88 @@
+import { theme } from '@ultraviolet/themes'
+import { createVar, style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
+
+export const paddingRightVar = createVar()
+const wrapper = style({
+  display: 'flex',
+  position: 'relative',
+  width: '100%',
+})
+
+const clearableContainer = style({
+  position: 'absolute',
+  right: theme.space[1],
+  top: theme.space['1.5'],
+})
+
+const textArea = recipe({
+  base: {
+    background: theme.colors.neutral.background,
+    border: `1px solid ${theme.colors.neutral.border}`,
+    borderRadius: theme.radii.default,
+    color: theme.colors.neutral.text,
+    padding: `${theme.space['1.5']} ${theme.space['1']} ${theme.space['1.5']} ${theme.space['2']}`,
+    paddingRight: paddingRightVar,
+    resize: 'vertical',
+    selectors: {
+      '&::placeholder': {
+        color: theme.colors.neutral.textWeak,
+      },
+      '&:disabled': {
+        background: theme.colors.neutral.backgroundDisabled,
+        borderColor: theme.colors.neutral.borderDisabled,
+        color: theme.colors.neutral.textDisabled,
+      },
+      '&:disabled::placeholder': {
+        color: theme.colors.neutral.textWeakDisabled,
+      },
+      '&:not(:disabled):focus': {
+        borderColor: theme.colors.primary.border,
+        boxShadow: theme.shadows.focusPrimary,
+        outline: 'none',
+      },
+      '&:not(:disabled):hover': {
+        borderColor: theme.colors.primary.border,
+      },
+      '&:read-only': {
+        background: theme.colors.neutral.backgroundWeak,
+        borderColor: theme.colors.neutral.border,
+      },
+    },
+    width: '100%',
+  },
+  defaultVariants: {
+    error: false,
+    success: false,
+    size: 'large',
+  },
+  variants: {
+    error: {
+      true: {
+        borderColor: theme.colors.danger.border,
+      },
+    },
+    success: {
+      true: {
+        borderColor: theme.colors.success.border,
+      },
+    },
+    size: {
+      small: {
+        fontSize: theme.typography.bodySmall.fontSize,
+      },
+      medium: {
+        fontSize: theme.typography.bodySmall.fontSize,
+      },
+      large: {
+        fontSize: theme.typography.body.fontSize,
+      },
+    },
+  },
+})
+
+export const textAreaStyle = {
+  clearableContainer,
+  textArea,
+  wrapper,
+}

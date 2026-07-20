@@ -1,0 +1,29 @@
+'use client'
+
+import { cn } from '@ultraviolet/utils'
+import type { Sizes } from '../types'
+import { selectableCardOptionGroupStyle } from '../styles.css'
+
+const IMAGE_SIZES = {
+  large: 56,
+  medium: 40,
+} as const
+
+type ImageType = {
+  src: string
+  alt?: string
+  className?: string
+  size: Sizes
+  disabled?: boolean
+}
+
+export const Image = ({ src, alt, size, disabled, className }: ImageType) => (
+  <img
+    alt={alt}
+    className={cn(className, disabled ? selectableCardOptionGroupStyle.disabledImage : '')}
+    data-disabled={disabled}
+    height={IMAGE_SIZES[size]}
+    src={src}
+    width={IMAGE_SIZES[size]}
+  />
+)

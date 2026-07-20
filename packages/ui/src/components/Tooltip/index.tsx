@@ -1,0 +1,82 @@
+'use client'
+
+import { cn } from '@ultraviolet/utils'
+import { forwardRef } from 'react'
+import type { ComponentProps, Ref } from 'react'
+import { Popup } from '../Popup'
+import { tooltipStyle } from './styles.css'
+
+type TooltipProps = Pick<
+  ComponentProps<typeof Popup>,
+  | 'id'
+  | 'children'
+  | 'maxWidth'
+  | 'text'
+  | 'className'
+  | 'visible'
+  | 'innerRef'
+  | 'role'
+  | 'data-testid'
+  | 'containerFullWidth'
+  | 'containerFullHeight'
+  | 'portalTarget'
+  | 'tabIndex'
+  | 'debounceDelay'
+  | 'disableAnimation'
+  | 'style'
+> & {
+  placement?: Exclude<ComponentProps<typeof Popup>['placement'], 'nested-menu'>
+}
+
+/**
+ * Tooltip component is used to display additional information on hover or focus.
+ * It is used to explain the purpose of the element it is attached to.
+ */
+export const Tooltip = forwardRef(
+  (
+    {
+      children,
+      text = '',
+      placement = 'auto',
+      id,
+      className,
+      containerFullWidth,
+      containerFullHeight,
+      maxWidth = 232,
+      visible,
+      innerRef,
+      role = 'tooltip',
+      'data-testid': dataTestId,
+      portalTarget,
+      debounceDelay,
+      disableAnimation,
+      tabIndex,
+      style,
+    }: TooltipProps,
+    tooltipRef: Ref<HTMLDivElement>,
+  ) => (
+    <Popup
+      className={cn(className, tooltipStyle.tooltip)}
+      containerFullHeight={containerFullHeight}
+      containerFullWidth={containerFullWidth}
+      data-testid={dataTestId}
+      debounceDelay={debounceDelay}
+      disableAnimation={disableAnimation}
+      id={id}
+      innerRef={innerRef}
+      maxWidth={maxWidth}
+      placement={placement}
+      portalTarget={portalTarget}
+      ref={tooltipRef}
+      role={role}
+      style={style}
+      tabIndex={tabIndex}
+      text={text}
+      visible={visible}
+    >
+      {children}
+    </Popup>
+  ),
+)
+
+Tooltip.displayName = 'Tooltip'

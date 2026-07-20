@@ -1,0 +1,224 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`filters > should render main row with filters 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      class="styles__1mgfhqz0 styles__x6hyh50 styles_alignItems_end_xxsmall__x6hyh5p styles_gap_1rem_xxsmall__x6hyh52p"
+      style="--_3mg8xe0: repeat(auto-fit, minmax(200px, 1fr)); --_3mg8xe1: repeat(auto-fit, minmax(200px, 1fr)); --_3mg8xe2: repeat(auto-fit, minmax(200px, 1fr)); --_3mg8xe3: repeat(auto-fit, minmax(200px, 1fr)); --_3mg8xe4: repeat(auto-fit, minmax(200px, 1fr)); --_3mg8xe5: repeat(auto-fit, minmax(200px, 1fr));"
+    >
+      <div
+        style="width: 100%;"
+      >
+        <div
+          class="styles__r3pe3n1 styles__toi52u0 styles_flexDirection_column_xxsmall__toi52u2d styles_gap_0.25rem_xxsmall__toi52u5j"
+        >
+          <label
+            class="styles_htmlFor__17td3g92 style__m4c9ow0 style_prominence_default__m4c9ow4 style_sentiment_neutral__m4c9owb style_variant_bodySmallStrong__m4c9owl style_undefined_compound_0__m4c9ow1a style_undefined_compound_64__m4c9ow32"
+            for="_r_1_"
+          >
+            Name
+          </label>
+          <div
+            class="styles__q3q8048 styles_medium__q3q8046"
+            data-disabled="false"
+            data-error="false"
+            data-readonly="false"
+            data-success="false"
+          >
+            <div
+              class="styles__q3q8041 styles__toi52u0 styles_alignItems_center_xxsmall__toi52ud styles_flexDirection_row_xxsmall__toi52u2j"
+              data-size="medium"
+            >
+              <div
+                class="styles__r3pe3n2 styles__toi52u0 styles_flexDirection_column_xxsmall__toi52u2d"
+                data-testid="search-icon"
+              >
+                <svg
+                  class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz6 uv_icons_1sbwqkz9 uv_icons_1sbwqkzg uv_icons_1sbwqkz26"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <title>
+                    SearchIcon
+                  </title>
+                  <path
+                    clip-rule="evenodd"
+                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06zM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <input
+              aria-invalid="false"
+              class="styles__q3q8049"
+              data-size="medium"
+              id="_r_1_"
+              name="name"
+              placeholder="Type to search..."
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        aria-label="status"
+        class="styles__uf6pag0"
+      >
+        <div
+          aria-controls="_r_7_"
+          aria-describedby="_r_7_"
+          class="styles__w40vpo9 styles_fullWidth_true__w40vpob"
+          tabindex="-1"
+        >
+          <div
+            class="styles__toi52u0 styles_flexDirection_column_xxsmall__toi52u2d styles_gap_0.25rem_xxsmall__toi52u5j"
+          >
+            <label
+              class="styles_htmlFor__17td3g92 style__m4c9ow0 style_prominence_default__m4c9ow4 style_sentiment_neutral__m4c9owb style_variant_bodySmallStrong__m4c9owl style_undefined_compound_0__m4c9ow1a style_undefined_compound_64__m4c9ow32"
+              for="_r_5_"
+            >
+              Status
+            </label>
+            <div
+              aria-controls="_r_7_"
+              aria-expanded="false"
+              aria-label="Status"
+              class="selectBar__r8qe46 selectBar__r8qe45 selectBar_size_medium__r8qe4b selectBar_state_neutral__r8qe4e"
+              data-disabled="false"
+              data-readonly="false"
+              data-testid="select-input-status"
+              id="_r_5_"
+              role="combobox"
+              tabindex="0"
+            >
+              <span
+                class="selectBar__r8qe44 style__m4c9ow0 style_prominence_weak__m4c9ow7 style_sentiment_neutral__m4c9owb style_variant_bodySmall__m4c9owk style_undefined_compound_3__m4c9ow1d style_undefined_compound_67__m4c9ow35"
+                style="--whiteSpace__qabug41: nowrap;"
+              >
+                Select status
+              </span>
+              <div
+                class="selectBar_small__r8qe43 styles__toi52u0 styles_alignItems_center_xxsmall__toi52ud styles_flexDirection_row_xxsmall__toi52u2j styles_gap_0.5rem_xxsmall__toi52u3p"
+              >
+                <svg
+                  aria-label="show dropdown"
+                  class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkz9 uv_icons_1sbwqkzg uv_icons_1sbwqkz1i"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <title>
+                    ArrowDownIcon
+                  </title>
+                  <path
+                    clip-rule="evenodd"
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-label="env"
+        class="styles__uf6pag0"
+      >
+        <div
+          aria-controls="_r_e_"
+          aria-describedby="_r_e_"
+          class="styles__w40vpo9 styles_fullWidth_true__w40vpob"
+          tabindex="-1"
+        >
+          <div
+            class="styles__toi52u0 styles_flexDirection_column_xxsmall__toi52u2d styles_gap_0.25rem_xxsmall__toi52u5j"
+          >
+            <label
+              class="styles_htmlFor__17td3g92 style__m4c9ow0 style_prominence_default__m4c9ow4 style_sentiment_neutral__m4c9owb style_variant_bodySmallStrong__m4c9owl style_undefined_compound_0__m4c9ow1a style_undefined_compound_64__m4c9ow32"
+              for="_r_c_"
+            >
+              Environment
+            </label>
+            <div
+              aria-controls="_r_e_"
+              aria-expanded="false"
+              aria-label="Environment"
+              class="selectBar__r8qe46 selectBar__r8qe45 selectBar_size_medium__r8qe4b selectBar_state_neutral__r8qe4e"
+              data-disabled="false"
+              data-readonly="false"
+              data-testid="select-input-env"
+              id="_r_c_"
+              role="combobox"
+              tabindex="0"
+            >
+              <span
+                class="selectBar__r8qe44 style__m4c9ow0 style_prominence_weak__m4c9ow7 style_sentiment_neutral__m4c9owb style_variant_bodySmall__m4c9owk style_undefined_compound_3__m4c9ow1d style_undefined_compound_67__m4c9ow35"
+                style="--whiteSpace__qabug41: nowrap;"
+              >
+                Select environment
+              </span>
+              <div
+                class="selectBar_small__r8qe43 styles__toi52u0 styles_alignItems_center_xxsmall__toi52ud styles_flexDirection_row_xxsmall__toi52u2j styles_gap_0.5rem_xxsmall__toi52u3p"
+              >
+                <svg
+                  aria-label="show dropdown"
+                  class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkz9 uv_icons_1sbwqkzg uv_icons_1sbwqkz1i"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <title>
+                    ArrowDownIcon
+                  </title>
+                  <path
+                    clip-rule="evenodd"
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="styles__toi52u0 styles_alignItems_center_xxsmall__toi52ud styles_flexDirection_row_xxsmall__toi52u2j styles_gap_1rem_xxsmall__toi52u3v"
+      >
+        <button
+          class="styles__e1wcoe0 styles_disabled_false__e1wcoe1 styles_fullWidth_false__e1wcoe3 styles_sentiment_primary__e1wcoe9 styles_size_medium__e1wcoef styles_variant_outlined__e1wcoek styles_undefined_compound_9__e1wcoeu"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <title>
+              AdjustmentsHorizontalIcon
+            </title>
+            <path
+              d="M6.846 1.808C6.846 1.362 6.485 1 6.038 1 5.592 1 5.231 1.362 5.231 1.808V5.038C5.231 5.485 5.592 5.846 6.038 5.846 6.485 5.846 6.846 5.485 6.846 5.038V4.231H14.115C14.562 4.231 14.923 3.869 14.923 3.423 14.923 2.977 14.562 2.615 14.115 2.615H6.846V1.808ZM11.692 6.385C11.692 5.939 11.331 5.577 10.885 5.577 10.439 5.577 10.077 5.939 10.077 6.385V9.615C10.077 10.062 10.439 10.423 10.885 10.423 11.331 10.423 11.692 10.062 11.692 9.615V8.808H14.115C14.562 8.808 14.923 8.446 14.923 8 14.923 7.554 14.562 7.192 14.115 7.192H11.692V6.385ZM6.038 10.154C6.485 10.154 6.846 10.516 6.846 10.962V11.769H14.115C14.562 11.769 14.923 12.131 14.923 12.577 14.923 13.023 14.562 13.385 14.115 13.385H6.846V14.192C6.846 14.638 6.485 15 6.038 15 5.592 15 5.231 14.638 5.231 14.192V10.962C5.231 10.516 5.592 10.154 6.038 10.154ZM2.808 7.192H9V8.808H2.808C2.362 8.808 2 8.446 2 8 2 7.554 2.362 7.192 2.808 7.192ZM4.154 2.615H2.808C2.362 2.615 2 2.977 2 3.423 2 3.869 2.362 4.231 2.808 4.231H4.154V2.615ZM2.808 11.769H4.154V13.385H2.808C2.362 13.385 2 13.023 2 12.577 2 12.131 2.362 11.769 2.808 11.769Z"
+            />
+          </svg>
+           All filters
+        </button>
+        <button
+          class="styles__e1wcoe0 styles_disabled_false__e1wcoe1 styles_fullWidth_false__e1wcoe3 styles_sentiment_primary__e1wcoe9 styles_size_medium__e1wcoef styles_variant_ghost__e1wcoej styles_undefined_compound_18__e1wcoe13"
+          type="button"
+        >
+          Clear all
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

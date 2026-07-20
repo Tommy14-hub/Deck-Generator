@@ -1,0 +1,601 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`menu > can navigate with arrow keys 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_2o_"
+      aria-describedby="menu-_r_2o_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > menu.Item > render with active props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_3n_"
+      aria-describedby="menu-_r_3n_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > menu.Item > render with borderless props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_3k_"
+      aria-describedby="menu-_r_3k_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > menu.Item > render with default props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_3b_"
+      aria-describedby="menu-_r_3b_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > menu.Item > render with disabled props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_3h_"
+      aria-describedby="menu-_r_3h_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > menu.Item > render with sentiment danger 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_3e_"
+      aria-describedby="menu-_r_3e_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > placement > renders bottom 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_32_"
+      aria-describedby="menu-_r_32_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > placement > renders left 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_35_"
+      aria-describedby="menu-_r_35_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > placement > renders right 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_38_"
+      aria-describedby="menu-_r_38_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > placement > renders top 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_2v_"
+      aria-describedby="menu-_r_2v_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders nested 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_25_"
+      aria-describedby="menu-_r_25_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with Menu.Group 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_7_"
+      aria-describedby="menu-_r_7_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with Menu.Group and labelDescription 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_b_"
+      aria-describedby="menu-_r_b_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with Menu.Item 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_4_"
+      aria-describedby="menu-_r_4_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with Menu.ItemLink & Menu.Item disabled 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_l_"
+      aria-describedby="menu-_r_l_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with Menu.ItemLink 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_f_"
+      aria-describedby="menu-_r_f_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with disclosure not a function 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_0_"
+      aria-describedby="menu-_r_0_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with footer 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_1m_"
+      aria-describedby="menu-_r_1m_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with rightComponent  (keyboard navigation) 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_22_"
+      aria-describedby="menu-_r_22_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with rightComponent 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_1p_"
+      aria-describedby="menu-_r_1p_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with rightComponent and link item (keyboard navigation) 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_1v_"
+      aria-describedby="menu-_r_1v_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with rightComponent and link item 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_1s_"
+      aria-describedby="menu-_r_1s_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > renders with visible=false 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-_r_2_"
+      aria-describedby="menu-_r_2_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > should search on simple childs 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-menu"
+      aria-describedby="menu-menu"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`menu > should search on simple complex childs 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="menu-menu"
+      aria-describedby="menu-menu"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <button
+        aria-expanded="true"
+        aria-haspopup="dialog"
+        data-testid="disclosure"
+        type="button"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

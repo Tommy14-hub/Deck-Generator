@@ -1,0 +1,66 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["tsconfig.json"],
+  "globalEnv": ["STORYBOOK_ENVIRONMENT", "ENVIRONMENT"],
+  "concurrency": "50%",
+  "tasks": {
+    "//#build:storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/**", "dist/**", "storybook-static/**"],
+      "passThroughEnv": ["STORYBOOK_ENVIRONMENT"]
+    },
+    "//#build:storybook:stats": {
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["STORYBOOK_ENVIRONMENT"]
+    },
+    "//#format": {},
+    "//#lint:fix": {
+      "cache": false
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx}", "vite.config.ts"],
+      "outputLogs": "new-only",
+      "outputs": [
+        ".generated/**",
+        "build/**",
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
+        "out/**",
+        "storybook-static/**"
+      ]
+    },
+    "e2e": {
+      "dependsOn": ["build"]
+    },
+    "lintpublish": {
+      "dependsOn": ["build"]
+    },
+    "size": {
+      "dependsOn": ["build"]
+    },
+    "start": {
+      "cache": false,
+      "dependsOn": ["build"],
+      "persistent": true
+    },
+    "test:unit": {
+      "cache": true,
+      "dependsOn": ["build"],
+      "outputLogs": "new-only",
+      "outputs": ["node_modules/.vite", ".vitest-reports", ".reports"],
+      "passThroughEnv": ["VITEST_*", "NODE_*"]
+    },
+    "test:unit:coverage": {
+      "dependsOn": ["build"],
+      "passThroughEnv": ["VITEST_*"]
+    },
+    "typecheck": {
+      "dependsOn": ["build"],
+      "inputs": ["**/*.{ts,tsx}"]
+    }
+  },
+  "ui": "stream"
+}

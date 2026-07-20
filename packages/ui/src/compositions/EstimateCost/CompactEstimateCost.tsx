@@ -1,0 +1,46 @@
+import { CalculatorIcon } from '@ultraviolet/icons/CalculatorIcon'
+import { Stack } from '../../components/Stack'
+import { Text } from '../../components/Text'
+import type { Iteration } from './types'
+import { estimateCostStyle } from './styles.css'
+
+type TotalPrice = {
+  hourly: number
+  maxHourly: number
+  maxOverlayHourly: number
+  maxTotal: number
+  overlayHourly: number
+  total: number
+}
+
+export const CompactEstimateCost = ({
+  label,
+  totalPrice,
+  iteration,
+  backgroundProminence,
+}: {
+  label: string
+  totalPrice: TotalPrice
+  iteration: Iteration
+  backgroundProminence: 'default' | 'strong'
+}) => (
+  <Stack
+    alignItems="center"
+    className={estimateCostStyle.compact[backgroundProminence]}
+    direction="row"
+    justifyContent="space-between"
+  >
+    <Text as="p" className={estimateCostStyle.compactText} variant="bodyStrong">
+      <CalculatorIcon sentiment="primary" size="medium" />
+      {label}
+    </Text>
+    <Stack alignItems="center" direction="row">
+      <Text as="span" variant="headingSmallStrong">
+        €{totalPrice.total}
+      </Text>
+      <Text as="span" variant="bodyStrong">
+        /{iteration.unit.length > 1 && iteration.unit.endsWith('s') ? iteration.unit.slice(0, -1) : iteration.unit}
+      </Text>
+    </Stack>
+  </Stack>
+)

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "esnext",
+    "noEmit": true,
+    // Should be removed once we clear all errors
+    "noUncheckedIndexedAccess": false,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "types": ["vite/client", "@testing-library/jest-dom", "./utils.d.ts", "./global.d.ts", "./expect.d.ts"]
+  },
+  "exclude": ["node_modules", "coverage", "dist", "examples", "e2e"],
+  "extends": ["@scaleway/tsconfig"],
+  "include": [
+    "utils/**/*.ts",
+    "utils/**/*.tsx",
+    "**/*.spec.ts",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "**/__stories/*.stories.tsx"
+  ]
+}

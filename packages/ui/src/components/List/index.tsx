@@ -1,0 +1,120 @@
+'use client'
+
+import { cn } from '@ultraviolet/utils'
+import { forwardRef } from 'react'
+import type { CSSProperties, Dispatch, ReactNode, RefAttributes, SetStateAction } from 'react'
+import { Cell } from './Cell'
+import { HeaderCell } from './HeaderCell'
+import { HeaderRow } from './HeaderRow'
+import { ListProvider, useListContext } from './ListContext'
+import { Row } from './Row'
+import { SelectBar } from './SelectBar'
+import { SkeletonRows } from './SkeletonRows'
+import { TableContainer } from './TableContainer'
+import type { ColumnProps } from './types'
+import { listStyle } from './styles.css'
+
+// Note: Get type optional type from omit values of ListContext
+type ListProps = {
+  expandable?: boolean
+  selectable?: boolean
+  columns: ColumnProps[]
+  children: ReactNode
+  /**
+   * Set it to true if you want to display a placeholder during loading
+   */
+  loading?: boolean
+  /**
+   * Auto collapse is collapsing expandable row when another is expanding
+   */
+  autoCollapse?: boolean
+  /**
+   * Action when selection changes (get the list of selected rows)
+   */
+  onSelectedChange?: Dispatch<SetStateAction<string[]>>
+  className?: string
+  style?: CSSProperties
+  colMode: 'strict' | 'flexible' | undefined
+}
+
+type NewListProps = Omit<ListProps, 'colMode'> & {
+  colMode: 'strict'
+}
+type LegacyListProps = Omit<ListProps, 'colMode'> & {
+  colMode?: 'flexible' | undefined
+}
+
+const BaseList = forwardRef<HTMLTableElement, NewListProps | LegacyListProps>(
+  (
+    {
+      expandable = false,
+      selectable = false,
+      columns,
+      children,
+      loading,
+      autoCollapse = false,
+      onSelectedChange,
+      className,
+      style,
+      colMode = 'flexible',
+    },
+    ref,
+  ) => (
+    <ListProvider
+      autoCollapse={autoCollapse}
+      colMode={colMode}
+      columns={columns}
+      expandButton={expandable}
+      onSelectedChange={onSelectedChange}
+      selectable={selectable}
+    >
+      <TableContainer>
+        <table className={cn(className, listStyle.list)} ref={ref} style={style}>
+          <HeaderRow hasSelectAllColumn={selectable}>
+            {columns.map((column, index) => (
+              <HeaderCell
+                info={column.info}
+                isOrdered={column.isOrdered}
+                key={`header-column-${index}`}
+                maxWidth={column.maxWidth}
+                minWidth={column.minWidth}
+                onOrder={column.onOrder}
+                orderDirection={column.orderDirection}
+                width={column.width}
+              >
+                {column.label}
+              </HeaderCell>
+            ))}
+          </HeaderRow>
+          <tbody>{loading ? <SkeletonRows cols={columns.length} rows={5} selectable={selectable} /> : children}</tbody>
+        </table>
+      </TableContainer>
+    </ListProvider>
+  ),
+)
+
+/**
+ * List is a component that displays a list of items based on the columns you provide and the data you pass.
+ */
+type ListType = {
+  // biome-ignore  lint/style/useUnifiedTypeSignatures: ok
+  (props: NewListProps & RefAttributes<HTMLTableElement>): ReactNode
+  /**
+   * @deprecated Use `colMode="strict"`
+   */
+
+  (props: LegacyListProps & RefAttributes<HTMLTableElement>): ReactNode
+  Cell: typeof Cell
+  Row: typeof Row
+  SelectBar: typeof SelectBar
+  useListContext: typeof useListContext
+}
+
+BaseList.displayName = 'List'
+
+export const List: ListType = Object.assign(BaseList, {
+  Cell,
+  Row,
+  SelectBar,
+  useListContext,
+})

@@ -1,0 +1,55 @@
+{
+  "name": "@ultraviolet/fonts",
+  "version": "2.2.1",
+  "description": "Ultraviolet Fonts",
+  "keywords": [
+    "fonts",
+    "ui"
+  ],
+  "homepage": "https://github.com/scaleway/ultraviolet#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scaleway/ultraviolet.git",
+    "directory": "packages/fonts"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "style": "./dist/fonts-cdn.css",
+      "require": "./dist/fonts-cdn.css",
+      "import": "./dist/fonts-cdn.css",
+      "default": "./dist/fonts-cdn.css"
+    },
+    "./fonts.css": "./dist/fonts-cdn.css",
+    "./fonts-bundled.css": "./dist/fonts-bundled.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vite build",
+    "build:profile": "npx vite-bundle-visualizer -c vite.config.ts",
+    "lintpublish": "pnpm publint",
+    "watch": "pnpm run '/^watch:.*/'",
+    "watch:build": "vite build --watch"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "vite": "catalog:"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "pnpm": ">=9.x"
+  }
+}

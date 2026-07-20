@@ -1,0 +1,241 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`tooltip > should render correctly with component in content prop 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_5_"
+      aria-describedby="_r_5_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      Children
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with placement > should renders tooltip with placement bottom 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_k_"
+      aria-describedby="_r_k_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with placement > should renders tooltip with placement left 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_c_"
+      aria-describedby="_r_c_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with placement > should renders tooltip with placement right 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_g_"
+      aria-describedby="_r_g_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with placement > should renders tooltip with placement top 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_8_"
+      aria-describedby="_r_8_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with required props 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_0_"
+      aria-describedby="_r_0_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      Children
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with required props and visible 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_1_"
+      aria-describedby="_r_1_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      Children
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with sentiment > should renders tooltip with placement neutral 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_o_"
+      aria-describedby="_r_o_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with sentiment > should renders tooltip with placement primary 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_s_"
+      aria-describedby="_r_s_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with sizes > should renders tooltip with placement large 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_18_"
+      aria-describedby="_r_18_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with sizes > should renders tooltip with placement medium 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_14_"
+      aria-describedby="_r_14_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`tooltip > should render correctly with sizes > should renders tooltip with placement small 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <div
+      aria-controls="_r_10_"
+      aria-describedby="_r_10_"
+      class="styles__w40vpo9"
+      tabindex="-1"
+    >
+      <p
+        data-testid="children"
+      >
+        Children
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

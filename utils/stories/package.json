@@ -1,0 +1,49 @@
+{
+  "name": "@utils/stories",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Ultraviolet Global Stories",
+  "keywords": [
+    "fonts",
+    "ui"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scaleway/ultraviolet.git",
+    "directory": "utils/stories"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "@storybook/addon-a11y": "10.4.6",
+    "@storybook/addon-docs": "10.4.6",
+    "@storybook/addon-links": "10.4.6",
+    "@storybook/addon-themes": "10.4.6",
+    "@storybook/builder-vite": "10.4.6",
+    "@storybook/mdx2-csf": "1.1.0",
+    "@storybook/react-vite": "10.4.6",
+    "@types/node": "24.13.2",
+    "@ultraviolet/form": "workspace:*",
+    "@ultraviolet/icons": "workspace:*",
+    "@ultraviolet/illustrations": "workspace:*",
+    "@ultraviolet/themes": "workspace:*",
+    "@ultraviolet/ui": "workspace:*",
+    "@vanilla-extract/css": "1.21.1",
+    "@vanilla-extract/dynamic": "2.1.5",
+    "@vanilla-extract/recipes": "0.5.7",
+    "@vanilla-extract/sprinkles": "1.7.0",
+    "react": "19.2.7"
+  },
+  "engines": {
+    "node": ">=20.x",
+    "pnpm": ">=10.x"
+  }
+}

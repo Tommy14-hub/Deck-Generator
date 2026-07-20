@@ -1,0 +1,43 @@
+import { screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
+import { TimeInputField } from '..'
+import { renderWithForm } from '../../../__tests__/helpers'
+
+describe('textInputField', () => {
+  it('should render correctly', () => {
+    const { asFragment } = renderWithForm(<TimeInputField label="Test" name="test" />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should render correctly disabled', () => {
+    const { asFragment } = renderWithForm(<TimeInputField label="Test" name="test" />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should trigger events', async () => {
+    const onFocus = vi.fn()
+    const onChange = vi.fn()
+    const onBlur = vi.fn()
+    renderWithForm(
+      <>
+        <TimeInputField name="Test" onBlur={onBlur} onChange={onChange} onFocus={onFocus} />
+        blur
+      </>,
+    )
+
+    const hours = screen.getByTestId('hours-input')
+    await userEvent.click(hours)
+    await userEvent.keyboard('[ArrowUp]')
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledOnce()
+    })
+
+    await waitFor(() => {
+      expect(onFocus).toHaveBeenCalledOnce()
+    })
+
+    await userEvent.click(screen.getByText('blur'))
+    expect(onBlur).toHaveBeenCalledOnce()
+  })
+})

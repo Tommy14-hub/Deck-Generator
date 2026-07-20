@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`errorProvider > renders correctly  1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      Test
+    </form>
+  </div>
+</DocumentFragment>
+`;

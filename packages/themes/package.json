@@ -1,0 +1,72 @@
+{
+  "name": "@ultraviolet/themes",
+  "version": "3.1.8",
+  "description": "Ultraviolet Themes",
+  "keywords": [
+    "themes",
+    "ui"
+  ],
+  "homepage": "https://github.com/scaleway/ultraviolet#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scaleway/ultraviolet.git",
+    "directory": "packages/themes"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.css.ts"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./*.css": "./dist/style/*.css",
+    "./console/*": {
+      "types": "./dist/themes/console/*/index.d.ts",
+      "import": "./dist/themes/console/*/index.js",
+      "require": "./dist/themes/console/*/index.js"
+    },
+    "./global": "./dist/themes.css",
+    "./theme.css": "./dist/themes.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vite build  && pnpm run type:generate",
+    "build:profile": "npx vite-bundle-visualizer -c vite.config.ts",
+    "lintpublish": "pnpm publint",
+    "type:generate": "tsc --declaration -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "watch": "pnpm run '/^watch:.*/'",
+    "watch:build": "vite build  --watch"
+  },
+  "dependencies": {
+    "@vanilla-extract/css": "1.21.1",
+    "@vanilla-extract/dynamic": "2.1.5"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "18.x || 19.x",
+    "react-dom": "18.x || 19.x"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "pnpm": ">=9.x"
+  }
+}

@@ -1,0 +1,580 @@
+import { fireEvent, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { renderWithTheme, shouldMatchSnapshot } from '@utils/test'
+import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
+import { Menu } from '..'
+
+const disclosure = (
+  <button data-testid="disclosure" type="button">
+    Menu
+  </button>
+)
+
+describe('menu', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('renders with disclosure not a function', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={disclosure}>
+        <Menu.Item>Menu.Item should not be visible in test</Menu.Item>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+  it('renders with visible=false', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure}>
+        <Menu.Item>Menu.Item should not be visible in test</Menu.Item>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+  it('renders with Menu.Item', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} visible>
+        <Menu.Item>Menu.Item</Menu.Item>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with Menu.Group', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} visible>
+        <Menu.Group label="Group">
+          <Menu.Item>Menu.Item</Menu.Item>
+        </Menu.Group>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with Menu.Group and labelDescription', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} visible>
+        <Menu.Group label="Group" labelDescription="This is a description">
+          <Menu.Item>Menu.Item</Menu.Item>
+        </Menu.Group>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with Menu.ItemLink', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} visible>
+        <Menu.Item href="/link">Menu.Item as Link</Menu.Item>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it(`renders with triggerMethod "hover"`, async () => {
+    renderWithTheme(
+      <Menu disclosure={() => disclosure} triggerMethod="hover" visible>
+        <Menu.Item href="/link">Menu.Item as Link</Menu.Item>
+      </Menu>,
+    )
+
+    const disclosureMenu = screen.getByTestId('disclosure')
+    fireEvent.mouseEnter(disclosureMenu)
+    await waitFor(() => expect(screen.getByRole('menu')).toBeVisible())
+    fireEvent.mouseLeave(disclosureMenu)
+
+    await userEvent.hover(disclosureMenu)
+
+    const menu = screen.getByRole('menu')
+    await waitFor(() => expect(menu).toBeVisible())
+
+    const menuItem = screen.getByRole<HTMLLinkElement>('menuitem')
+    await userEvent.hover(menuItem)
+    expect(menu).toBeVisible()
+
+    fireEvent.mouseLeave(menu)
+    await waitFor(() => expect(menu).not.toBeVisible())
+  })
+
+  it('renders with Menu.ItemLink & Menu.Item disabled', () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} visible>
+        <Menu.Item disabled>Menu.Item disabled</Menu.Item>
+        <Menu.Item disabled href="/link">
+          Menu.Item Link disabled
+        </Menu.Item>
+      </Menu>,
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('disclosure Component render with function disclosure', async () => {
+    renderWithTheme(
+      <Menu disclosure={() => disclosure} id="menu">
+        <Menu.Item href="/link">Menu.Item as Link</Menu.Item>
+      </Menu>,
+    )
+
+    const menuButton = screen.getByRole('button')
+    // Open and close
+    await userEvent.click(menuButton)
+    await userEvent.click(menuButton)
+  })
+
+  it('disclosure Component render with function children', async () => {
+    renderWithTheme(
+      <Menu disclosure={() => disclosure} id="menu">
+        {({ toggle }) => <Menu.Item onClick={toggle}>Menu.Item as Button with toggle</Menu.Item>}
+      </Menu>,
+    )
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+
+    const menuLink = screen.getByRole<HTMLLinkElement>('menuitem')
+    await userEvent.click(menuLink)
+
+    await waitFor(() => {
+      expect(menuLink).not.toBeVisible()
+    })
+
+    await waitFor(() => {
+      expect(menuButton.getAttribute('aria-expanded')).toBe('false')
+    })
+  })
+
+  it('should hideOnClickItem', async () => {
+    renderWithTheme(
+      <Menu disclosure={() => disclosure} hideOnClickItem id="menu">
+        <Menu.Item>Test</Menu.Item>
+      </Menu>,
+    )
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+    const dialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(dialog).toBeVisible()
+    })
+
+    const item = screen.getByRole<HTMLButtonElement>('menuitem')
+    await userEvent.click(item)
+
+    await waitFor(() => {
+      expect(dialog).not.toBeVisible()
+    })
+  })
+
+  it('should search on simple childs', async () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} id="menu" searchable>
+        <Menu.Item>Disk</Menu.Item>
+        <Menu.Item>Ram</Menu.Item>
+      </Menu>,
+    )
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+    const dialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(dialog).toBeVisible()
+    })
+
+    expect(asFragment()).toMatchSnapshot()
+
+    const searchInput = screen.getByRole<HTMLInputElement>('textbox')
+    await userEvent.type(searchInput, 'Disk')
+
+    const items = screen.getAllByRole<HTMLButtonElement>('menuitem')
+    expect(items).toHaveLength(1)
+    expect(items[0]).toHaveTextContent('Disk')
+  })
+
+  it('should search on simple complex childs', async () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} id="menu" searchable>
+        <Menu.Item>
+          <div>
+            <div>Volume type:</div>
+            <div>Disk</div>
+          </div>
+        </Menu.Item>
+        <Menu.Item>
+          <div>
+            <div>Memory type:</div>
+            <div>Ram</div>
+          </div>
+        </Menu.Item>
+      </Menu>,
+    )
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+    const dialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(dialog).toBeVisible()
+    })
+
+    expect(asFragment()).toMatchSnapshot()
+
+    const searchInput = screen.getByRole<HTMLInputElement>('textbox')
+    await userEvent.type(searchInput, 'Disk')
+
+    const items = screen.getAllByRole<HTMLButtonElement>('menuitem')
+    expect(items).toHaveLength(1)
+    expect(items[0]).toHaveTextContent('Disk')
+  })
+  it('renders with footer', () =>
+    shouldMatchSnapshot(
+      <Menu disclosure={() => disclosure} footer="Footer" visible>
+        <Menu.Item>Not footer</Menu.Item>
+      </Menu>,
+    ))
+
+  it('renders with rightComponent', async () => {
+    const onClick = vi.fn()
+    const onClickMenu = vi.fn()
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} footer="Footer" hideOnClickItem visible>
+        <Menu.Item
+          onClick={onClickMenu}
+          rightComponent={
+            <button onClick={onClick} type="button">
+              click me
+            </button>
+          }
+        >
+          Not footer
+        </Menu.Item>
+      </Menu>,
+    )
+
+    const button = screen.getByRole('button', {
+      name: 'click me',
+    })
+    await userEvent.click(button)
+    expect(onClick).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledTimes(0)
+    expect(button).toBeVisible()
+
+    await userEvent.click(screen.getByText('Not footer'))
+    expect(onClick).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledOnce()
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with rightComponent and link item', async () => {
+    const onClick = vi.fn()
+    const onClickMenu = vi.fn()
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} footer="Footer" hideOnClickItem visible>
+        <Menu.Item
+          href="exemple.com"
+          onClick={onClickMenu}
+          rightComponent={
+            <button onClick={onClick} type="button">
+              click me
+            </button>
+          }
+        >
+          Not footer
+        </Menu.Item>
+      </Menu>,
+    )
+
+    const button = screen.getByRole('button', {
+      name: 'click me',
+    })
+    await userEvent.click(button)
+    expect(onClick).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledTimes(0)
+    expect(button).toBeVisible()
+
+    await userEvent.click(screen.getByText('Not footer'))
+    expect(onClick).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledOnce()
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with rightComponent and link item (keyboard navigation)', async () => {
+    const onKeyDown = vi.fn()
+    const onClickMenu = vi.fn()
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} footer="Footer" hideOnClickItem visible>
+        <Menu.Item
+          href="exemple.com"
+          onClick={onClickMenu}
+          rightComponent={
+            <button onKeyDown={onKeyDown} type="button">
+              click me
+            </button>
+          }
+        >
+          Not footer
+        </Menu.Item>
+      </Menu>,
+    )
+
+    const button = screen.getByRole('button', {
+      name: 'click me',
+    })
+    button.focus()
+    await userEvent.keyboard('[Enter]')
+    expect(onKeyDown).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledTimes(0)
+    expect(button).toBeVisible()
+
+    await userEvent.keyboard('[Space]')
+    expect(onKeyDown).toHaveBeenCalledTimes(2)
+
+    await userEvent.click(screen.getByText('Not footer'))
+    expect(onKeyDown).toHaveBeenCalledTimes(2)
+    expect(onClickMenu).toHaveBeenCalledOnce()
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders with rightComponent  (keyboard navigation)', async () => {
+    const onKeyDown = vi.fn()
+    const onClickMenu = vi.fn()
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} footer="Footer" hideOnClickItem visible>
+        <Menu.Item
+          onClick={onClickMenu}
+          rightComponent={
+            <button onKeyDown={onKeyDown} type="button">
+              click me
+            </button>
+          }
+        >
+          Not footer
+        </Menu.Item>
+      </Menu>,
+    )
+
+    const button = screen.getByRole('button', {
+      name: 'click me',
+    })
+    button.focus()
+    await userEvent.keyboard('[Enter]')
+    expect(onKeyDown).toHaveBeenCalledOnce()
+    expect(onClickMenu).toHaveBeenCalledTimes(0)
+    expect(button).toBeVisible()
+
+    await userEvent.keyboard('[Space]')
+    expect(onKeyDown).toHaveBeenCalledTimes(2)
+
+    await userEvent.click(screen.getByText('Not footer'))
+    expect(onKeyDown).toHaveBeenCalledTimes(2)
+    expect(onClickMenu).toHaveBeenCalledOnce()
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+  it('renders nested', async () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure} searchable>
+        <Menu.Item borderless>Power on</Menu.Item>
+        <Menu disclosure={<Menu.Item>SubMenu click</Menu.Item>} placement="right" triggerMethod="click">
+          <Menu.Item>hi!</Menu.Item>
+        </Menu>
+      </Menu>,
+    )
+
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+    const dialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(dialog).toBeVisible()
+    })
+
+    const nestedElement = screen.getByText('SubMenu click')
+    await userEvent.click(nestedElement)
+    expect(screen.getByText('hi!')).toBeVisible()
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('parent menu should stay visible after opening nested menu', async () => {
+    renderWithTheme(
+      <Menu disclosure={() => disclosure}>
+        <Menu.Item>Item 1</Menu.Item>
+        <Menu disclosure={<Menu.Item>SubMenu</Menu.Item>} placement="right" triggerMethod="click">
+          <Menu.Item>Nested Item</Menu.Item>
+        </Menu>
+        <Menu.Item>Item 2</Menu.Item>
+      </Menu>,
+    )
+
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+
+    await userEvent.click(menuButton)
+    const parentDialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(parentDialog).toBeVisible()
+    })
+
+    const nestedElement = screen.getByText('SubMenu')
+    await userEvent.click(nestedElement)
+
+    expect(parentDialog).toBeVisible()
+    expect(screen.getByText('Item 1')).toBeVisible()
+    expect(screen.getByText('Item 2')).toBeVisible()
+    expect(screen.getByText('Nested Item')).toBeVisible()
+  })
+
+  it('can navigate with arrow keys', async () => {
+    const { asFragment } = renderWithTheme(
+      <Menu disclosure={() => disclosure}>
+        <Menu.Item borderless data-testid="item">
+          Power on
+        </Menu.Item>
+        <Menu
+          disclosure={<Menu.Item data-testid="nested-menu">SubMenu click</Menu.Item>}
+          placement="right"
+          triggerMethod="click"
+        >
+          <Menu.Item data-testid="nested-item">hi!</Menu.Item>
+        </Menu>
+      </Menu>,
+    )
+
+    const menuButton = screen.getByRole<HTMLButtonElement>('button')
+    // Open Menu
+    await userEvent.click(menuButton)
+    const dialog = screen.getByRole('dialog')
+
+    await waitFor(() => {
+      expect(dialog).toBeVisible()
+    })
+
+    const nestedElement = screen.getByTestId('nested-menu')
+    await userEvent.keyboard('[ArrowDown][ArrowDown]')
+    expect(nestedElement).toHaveFocus()
+    await userEvent.keyboard('[ArrowUp][ArrowUp]')
+    expect(nestedElement).toHaveFocus()
+    await userEvent.keyboard('[ArrowRight]')
+
+    const nestedMenu = screen.getByTestId('nested-item')
+    expect(nestedMenu).toBeVisible()
+    await userEvent.keyboard('[ArrowLeft]')
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  describe('placement', () => {
+    it('renders top', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={() => disclosure} placement="top" visible>
+          <Menu.Item>top</Menu.Item>
+        </Menu>,
+      ))
+
+    it('renders bottom', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={() => disclosure} placement="bottom" visible>
+          <Menu.Item>bottom</Menu.Item>
+        </Menu>,
+      ))
+
+    it('renders left', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={() => disclosure} placement="left" visible>
+          <Menu.Item>left</Menu.Item>
+        </Menu>,
+      ))
+    it('renders right', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={() => disclosure} placement="right" visible>
+          <Menu.Item>right</Menu.Item>
+        </Menu>,
+      ))
+  })
+
+  describe('menu.Item', () => {
+    it('render with default props', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={disclosure} visible>
+          <Menu.Item>Default Props</Menu.Item>
+        </Menu>,
+      ))
+
+    it('render with sentiment danger', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={disclosure} visible>
+          <Menu.Item sentiment="danger">Danger</Menu.Item>
+        </Menu>,
+      ))
+
+    it('render with disabled props', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={disclosure} visible>
+          <Menu.Item disabled>Disabled Props</Menu.Item>
+        </Menu>,
+      ))
+    it('render with borderless props', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={disclosure} visible>
+          <Menu.Item borderless>Borderless Props</Menu.Item>
+        </Menu>,
+      ))
+    it('render with active props', () =>
+      shouldMatchSnapshot(
+        <Menu disclosure={disclosure} visible>
+          <Menu.Item active>Active Props</Menu.Item>
+        </Menu>,
+      ))
+
+    it('should hideOnClick for specific item', async () => {
+      renderWithTheme(
+        <Menu disclosure={() => disclosure} id="menu">
+          <Menu.Item hideOnClick>Should Hide</Menu.Item>
+          <Menu.Item>Should not Hide</Menu.Item>
+        </Menu>,
+      )
+      const menuButton = screen.getByRole<HTMLButtonElement>('button')
+      // Open Menu
+      await userEvent.click(menuButton)
+      const menu = screen.getByRole('menu')
+
+      await waitFor(() => {
+        expect(menu).toBeVisible()
+      })
+
+      // Click item that should NOT close the menu
+      const itemNoHide = screen.getByRole<HTMLLinkElement>('menuitem', {
+        name: 'Should not Hide',
+      })
+      await userEvent.click(itemNoHide)
+      await waitFor(() => {
+        expect(menu).toBeVisible()
+      })
+
+      // Click item that SHOULD close the menu
+      const itemHide = screen.getByRole<HTMLLinkElement>('menuitem', {
+        name: 'Should Hide',
+      })
+      await userEvent.click(itemHide)
+      await waitFor(() => {
+        expect(menu).not.toBeVisible()
+      })
+    })
+  })
+})

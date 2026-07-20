@@ -1,0 +1,125 @@
+{
+  "name": "@ultraviolet/illustrations",
+  "version": "6.0.22",
+  "description": "Ultraviolet Illustrations",
+  "keywords": [
+    "illustrations",
+    "ui"
+  ],
+  "homepage": "https://github.com/scaleway/ultraviolet#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scaleway/ultraviolet.git",
+    "directory": "packages/illustrations"
+  },
+  "files": [
+    "dist/"
+  ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    },
+    "./products/*": {
+      "types": "./dist/assets/products/*/index.d.ts",
+      "import": "./dist/assets/products/*/index.js",
+      "require": "./dist/assets/products/*/index.js",
+      "default": "./dist/assets/products/*/index.js"
+    },
+    "./products": {
+      "types": "./dist/assets/products/index.d.ts",
+      "import": "./dist/assets/products/index.js",
+      "require": "./dist/assets/products/index.js",
+      "default": "./dist/assets/products/index.js"
+    },
+    "./various/*": {
+      "types": "./dist/assets/various/*/index.d.ts",
+      "import": "./dist/assets/various/*/index.js",
+      "require": "./dist/assets/various/*/index.js",
+      "default": "./dist/assets/various/*/index.js"
+    },
+    "./various": {
+      "types": "./dist/assets/various/index.d.ts",
+      "import": "./dist/assets/various/index.js",
+      "require": "./dist/assets/various/index.js",
+      "default": "./dist/assets/various/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js",
+      "require": "./dist/components/*/index.js",
+      "default": "./dist/components/*/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vite build  && pnpm run type:generate",
+    "build:profile": "npx vite-bundle-visualizer -c vite.config.ts",
+    "lintpublish": "publint",
+    "size": "size-limit",
+    "test:unit": "TZ=UTC LC_ALL=en_US.UTF-8 pnpm vitest --run ",
+    "test:unit:coverage": "pnpm test:unit --coverage",
+    "type:generate": "tsc --declaration -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "watch": "pnpm run '/^watch:.*/'",
+    "watch:build": "vite build  --watch"
+  },
+  "dependencies": {
+    "@ultraviolet/themes": "workspace:*",
+    "@ultraviolet/utils": "workspace:*",
+    "@vanilla-extract/css": "1.21.1",
+    "@vanilla-extract/dynamic": "2.1.5"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "@ultraviolet/icons": "workspace:*",
+    "@ultraviolet/ui": "workspace:*",
+    "@utils/test": "workspace:*",
+    "@vanilla-extract/vite-plugin": "5.2.3",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "tinyglobby": "0.2.17",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "18.x || 19.x",
+    "react-dom": "18.x || 19.x"
+  },
+  "size-limit": [
+    {
+      "path": [
+        "dist/**/*.js",
+        "!*.d.ts",
+        "!*.cjs"
+      ],
+      "limit": "999 MB",
+      "webpack": false,
+      "brotli": true,
+      "running": false
+    }
+  ],
+  "engines": {
+    "node": ">=18.x",
+    "pnpm": ">=9.x"
+  }
+}

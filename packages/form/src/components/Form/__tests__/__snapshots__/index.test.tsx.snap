@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`form > renders correctly with node children 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      Test
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`form > renders correctly with onSubmit 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,16 @@
+{
+  "name": "@repo/config",
+  "version": "0.0.8",
+  "private": true,
+  "files": [
+    "tsconfig/"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "vite": "catalog:"
+  },
+  "export": {
+    "./tsconfig/*": "./tsconfig/*.json",
+    "./vite/*": "./vite/*.config.ts"
+  }
+}

@@ -1,0 +1,59 @@
+import { screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { renderWithTheme } from '@utils/test'
+import { describe, expect, it } from 'vitest'
+import { Label } from '..'
+
+describe('label', () => {
+  it('renders correctly with default props', () => {
+    const { asFragment } = renderWithTheme(<Label>Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly required', () => {
+    const { asFragment } = renderWithTheme(<Label required>Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly with label description (string)', () => {
+    const { asFragment } = renderWithTheme(<Label labelDescription="test">Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly with label description (ReactNode)', () => {
+    const { asFragment } = renderWithTheme(<Label labelDescription={<div>test</div>}>Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+  it('renders correctly small', () => {
+    const { asFragment } = renderWithTheme(<Label size="small">Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly medium', () => {
+    const { asFragment } = renderWithTheme(<Label size="medium">Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly large', () => {
+    const { asFragment } = renderWithTheme(<Label size="large">Label</Label>)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders correctly with htmlFor', async () => {
+    const { asFragment } = renderWithTheme(
+      <div>
+        <Label htmlFor="id" id="id-label" size="small">
+          Label
+        </Label>
+        <input data-testid="test-input" id="id" />
+      </div>,
+    )
+
+    const input = screen.getByTestId('test-input')
+    const label = screen.getByText('Label')
+
+    await userEvent.click(label)
+    expect(input).toHaveFocus()
+    expect(asFragment()).toMatchSnapshot()
+  })
+})

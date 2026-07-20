@@ -1,0 +1,27 @@
+{
+  "name": "@examples/next-app-router",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@scaleway/regex": "6.0.2",
+    "@types/node": "24.13.2",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@ultraviolet/fonts": "workspace:*",
+    "@ultraviolet/form": "workspace:*",
+    "@ultraviolet/icons": "workspace:*",
+    "@ultraviolet/nextjs": "workspace:*",
+    "@ultraviolet/themes": "workspace:*",
+    "@ultraviolet/ui": "workspace:*",
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "typescript": "npm:typescript@6.0.3"
+  }
+}

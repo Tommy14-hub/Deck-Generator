@@ -1,0 +1,30 @@
+{
+  "name": "@repo/e2e",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "e2e": "playwright test",
+    "e2e:debug": "playwright test --ui",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@ultraviolet/fonts": "workspace:*",
+    "@ultraviolet/form": "workspace:*",
+    "@ultraviolet/icons": "workspace:*",
+    "@ultraviolet/themes": "workspace:*",
+    "@ultraviolet/ui": "workspace:*",
+    "@vitejs/plugin-react": "6.0.3",
+    "globals": "17.7.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-router-dom": "7.18.0",
+    "typescript": "7.0.1-rc",
+    "vite": "catalog:"
+  }
+}

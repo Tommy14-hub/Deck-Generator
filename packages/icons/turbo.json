@@ -1,0 +1,11 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "size": {
+      "dependsOn": ["@ultraviolet/ui#build"]
+    },
+    "typecheck": {
+      "dependsOn": ["@ultraviolet/ui#build"]
+    }
+  }
+}

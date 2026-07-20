@@ -1,0 +1,121 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`textInputField > should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u5j"
+      >
+        <label
+          class="uv_17td3g92 uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9own uv_m4c9ow1a uv_m4c9ow32"
+          for="_r_0_"
+        >
+          Test
+        </label>
+        <div
+          class="uv_q3q8048 uv_q3q8045"
+          data-disabled="false"
+          data-error="false"
+          data-readonly="false"
+          data-success="false"
+        >
+          <input
+            aria-invalid="false"
+            class="uv_q3q8049"
+            data-size="large"
+            id="_r_0_"
+            name="test"
+            type="text"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`textInputField > should render correctly generated 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="testing"
+  >
+    <form
+      novalidate=""
+      style="display: contents;"
+    >
+      <div
+        class="uv_toi52u0 uv_toi52u2d uv_toi52u5j"
+      >
+        <div
+          class="uv_toi52u0 uv_toi52uv uv_toi52u2j uv_toi52u5j"
+        >
+          <label
+            class="uv_17td3g92 uv_m4c9ow0 uv_m4c9ow4 uv_m4c9owb uv_m4c9own uv_m4c9ow1a uv_m4c9ow32"
+            for="_r_4_"
+          >
+            Test
+          </label>
+          <span
+            class="uv_m4c9ow0 uv_m4c9ow4 uv_m4c9ow9 uv_m4c9own uv_m4c9ow1a uv_m4c9ow2m"
+          >
+            *
+          </span>
+        </div>
+        <div
+          class="uv_q3q8048 uv_q3q8045"
+          data-disabled="false"
+          data-error="false"
+          data-readonly="false"
+          data-success="false"
+        >
+          <input
+            aria-invalid="false"
+            class="uv_q3q8049"
+            data-size="large"
+            id="_r_4_"
+            name="test"
+            required=""
+            type="text"
+            value="This is an example"
+          />
+          <div
+            class="uv_q3q8042 uv_toi52u0 uv_toi52ud uv_toi52u2j uv_toi52u3p"
+          >
+            <button
+              aria-label="clear value"
+              class="uv_e1wcoe0 uv_e1wcoe1 uv_e1wcoe3 uv_e1wcoe8 uv_e1wcoeg uv_e1wcoej uv_e1wcoe19"
+              type="button"
+            >
+              <svg
+                class="uv_icons_1sbwqkz0 uv_icons_1sbwqkz1 uv_icons_1sbwqkz3 uv_icons_1sbwqkzg uv_icons_1sbwqkz1n"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              >
+                <title>
+                  CloseIcon
+                </title>
+                <path
+                  d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="uv_e1wcoe0 uv_e1wcoe1 uv_e1wcoe3 uv_e1wcoe9 uv_e1wcoee uv_e1wcoei uv_e1wcoel"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

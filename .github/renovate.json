@@ -1,0 +1,63 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabledManagers": ["dockerfile", "github-actions", "npm", "nvm"],
+  "extends": [
+    "config:best-practices",
+    "config:js-app",
+    ":combinePatchMinorReleases",
+    ":gitSignOff",
+    "schedule:weekends"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/__tests__/**",
+    "**/__fixtures__/**",
+    "**/examples/**"
+  ],
+  "prConcurrentLimit": 5,
+  "reviewers": ["team:console"],
+  "reviewersSampleSize": 2,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["engines", "peerDependencies"],
+      "rangeStrategy": "widen"
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps"
+    },
+    {
+      "matchManagers": ["dockerfile", "github-actions"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "devDeps"
+    },
+    {
+      "matchDepTypes": ["packageManager", "devDependencies"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "devDeps"
+    },
+    {
+      "matchPackageNames": ["/^@scaleway//"],
+      "minimumReleaseAge": null
+    },
+    {
+      "matchPackageNames": ["/^@uiw//"],
+      "groupName": "Code Editor",
+      "groupSlug": "uiw-code-editor-react"
+    },
+    {
+      "matchPackageNames": ["/^@testing-library/"],
+      "groupName": "Testing library",
+      "groupSlug": "testing-library"
+    },
+    {
+      "matchPackageNames": ["/^prosemirror-/", "@handlewithcare/react-prosemirror"],
+      "groupName": "ProseMirror",
+      "groupSlug": "prosemirror"
+    }
+  ]
+}

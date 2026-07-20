@@ -1,0 +1,39 @@
+name: Design tokens
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 9 * * 1-5'
+
+jobs:
+  synchronise:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        env:
+          LANG: en_US.UTF-8
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+      - name: Use Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+      - run: pnpm install
+      - name: Generate json files
+        run: |
+          pnpm run tokens:update
+
+      - name: Compare & Create Pull Request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          base: main
+          author: Scaleway Design <github@scaleway.com>
+          commit-message: 'fix(theme): synchronise design tokens'
+          branch: fix/design-tokens-synchronise
+          delete-branch: true
+          title: 'fix(theme): synchronise design tokens'
+          body: |
+            Design system tokens update. This MR is created automatically when a change is detected in design tokens.
+          team-reviewers: console
+          labels: design system

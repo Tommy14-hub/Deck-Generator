@@ -1,0 +1,149 @@
+import { theme } from '@ultraviolet/themes'
+import { keyframes, styleVariants } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
+import { DEFAULT_ARROW_WIDTH } from './helpers'
+import { tagStyle } from '../Tag/styles.css'
+import { tagListStyle } from '../TagList/styles.css'
+import { textStyle } from '../Text/style.css'
+import {
+  animationDurationPopup,
+  arrowLeft,
+  arrowTop,
+  arrowTransform,
+  maxHeightPopup,
+  maxWidthPopup,
+  popupInitialPosition,
+  popupPosition,
+} from './variables.css'
+
+const animationEntry = keyframes({
+  ' 0%': {
+    opacity: 0,
+    transform: popupInitialPosition,
+  },
+  '100%': {
+    opacity: 1,
+    transform: popupPosition,
+  },
+})
+
+const exitAnimation = keyframes({
+  '0%': {
+    opacity: 1,
+    transform: popupPosition,
+  },
+  '100% ': {
+    opacity: 0,
+    transform: popupInitialPosition,
+  },
+})
+
+const container = recipe({
+  base: {
+    maxHeight: '100%',
+    overflow: 'auto',
+  },
+  variants: {
+    hasMaxHeight: {
+      true: {
+        maxHeight: `calc(${maxHeightPopup} - ${theme.space[2]})`,
+      },
+    },
+  },
+})
+
+const popup = recipe({
+  base: {
+    backgroundColor: theme.colors.neutral.backgroundStronger,
+    borderRadius: theme.radii.default,
+    color: theme.colors.neutral.textStronger,
+    fontSize: '0.8rem',
+    inset: '0 auto auto 0',
+    left: 0,
+    maxHeight: maxHeightPopup,
+    maxWidth: maxWidthPopup,
+    opacity: 0,
+    overflowWrap: 'break-word',
+    padding: `${theme.space['0.5']} ${theme.space[1]}`,
+    position: 'absolute',
+    textAlign: 'center',
+    top: 0,
+    transform: popupPosition,
+    zIndex: 1,
+  },
+  defaultVariants: {
+    hasArrow: true,
+    visibleInDom: true,
+  },
+  variants: {
+    hasArrow: {
+      true: {
+        selectors: {
+          '&::after': {
+            borderColor: `${theme.colors.neutral.backgroundStronger} transparent transparent transparent`,
+            borderStyle: 'solid',
+            borderWidth: `${DEFAULT_ARROW_WIDTH}px`,
+            content: ' ',
+            left: arrowLeft,
+            marginLeft: `-${DEFAULT_ARROW_WIDTH}px`,
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: arrowTop,
+            transform: arrowTransform,
+          },
+        },
+      },
+    },
+    visibleInDom: {
+      false: {
+        display: 'none',
+      },
+    },
+  },
+})
+
+const animation = styleVariants({
+  notReverse: {
+    animation: `${animationDurationPopup} ${animationEntry} forwards`,
+  },
+  reverse: {
+    animation: `${animationDurationPopup} ${exitAnimation} forwards`,
+  },
+})
+
+const childrenContainer = recipe({
+  base: {
+    display: 'inherit',
+    selectors: {
+      [`${tagListStyle.ellipsisChild} > &`]: {
+        minWidth: 0,
+      },
+      [`&:has(${tagStyle.text})`]: {
+        minWidth: 0,
+        width: '100%',
+      },
+      [`&:has(.${textStyle.oneLine})`]: {
+        minWidth: 0,
+      },
+    },
+  },
+  variants: {
+    fullHeight: {
+      true: {
+        height: '100%',
+      },
+    },
+    fullWidth: {
+      true: {
+        width: '100%',
+      },
+    },
+  },
+})
+
+export const popupStyle = {
+  container,
+  popup,
+  animation,
+  childrenContainer,
+}
