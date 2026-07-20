@@ -2,7 +2,7 @@
 
 import { Separator, Stack, Tabs, Text } from '@ultraviolet/ui'
 import { useState } from 'react'
-import { generateDeck } from '../pptxBuilders'
+import { generateDeck } from '../lib/pptx/generateDeck'
 import type { ValidationErrors } from '../types'
 import { useFormState } from '../useFormState'
 import { ExportPanel } from './ExportPanel'
