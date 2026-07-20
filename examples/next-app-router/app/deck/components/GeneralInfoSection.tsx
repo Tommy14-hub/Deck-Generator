@@ -67,7 +67,7 @@ export function GeneralInfoSection({
         <SelectInput
           label="Deck Type"
           value={deckType}
-          onChange={val => {
+          onChange={(val: string) => {
             if (val === 'proposal' || val === 'qbr') {
               setDeckType(val as DeckType)
             }
