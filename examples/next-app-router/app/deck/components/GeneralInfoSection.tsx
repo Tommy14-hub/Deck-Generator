@@ -41,7 +41,7 @@ export function GeneralInfoSection({
           label="Client Name"
           placeholder="Acme Corporation"
           value={clientName}
-          onChange={(e) => setClientName(e.target.value)}
+          onChange={e => setClientName(e.target.value)}
           required
           helper="The organisation this deck is prepared for."
         />
@@ -50,23 +50,24 @@ export function GeneralInfoSection({
           label="Project Title"
           placeholder="Cloud Migration Strategy 2025"
           value={projectTitle}
-          onChange={(e) => setProjectTitle(e.target.value)}
+          onChange={e => setProjectTitle(e.target.value)}
           required
           helper="Appears as the main title on the cover slide."
         />
 
         <TextInput
           label="Presentation Date"
-          type="date"
+          placeholder="YYYY-MM-DD"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={e => setDate(e.target.value)}
           required
+          helper="Format: YYYY-MM-DD"
         />
 
         <SelectInput
           label="Deck Type"
           value={deckType}
-          onChange={(val) => {
+          onChange={(val: string) => {
             if (val === 'proposal' || val === 'qbr') {
               setDeckType(val as DeckType)
             }

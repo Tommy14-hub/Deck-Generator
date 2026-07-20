@@ -8,8 +8,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  description:
-    'Generate client proposals and internal QBR presentations as downloadable PowerPoint decks.',
+  description: 'Generate client proposals and internal QBR presentations as downloadable PowerPoint decks.',
   title: 'Scaleway Deck Generator',
 }
 
@@ -35,9 +34,7 @@ export default function RootLayout({
           rel="preload"
           type="font/woff2"
         />
-        <style id="uv-current-theme">
-          {generateObjectStyleFromTheme(consoleLightTheme)}
-        </style>
+        <style id="uv-current-theme">{generateObjectStyleFromTheme(consoleLightTheme)}</style>
       </head>
       <body>
         <ThemeRegistry theme={consoleLightTheme}>{children}</ThemeRegistry>

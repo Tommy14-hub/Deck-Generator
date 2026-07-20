@@ -6,7 +6,17 @@ import type { DeckFormState, ValidationErrors } from '../types'
 /** Inline download icon (no @ultraviolet/icons dep required) */
 function DownloadIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
       <polyline points="7 10 12 15 17 10" />
       <line x1="12" y1="15" x2="12" y2="3" />
@@ -55,7 +65,7 @@ export function ExportPanel({ state, status, errors, onGenerate, errorMessage }:
       {hasErrors && (
         <Alert sentiment="danger" title="Please fix the following before generating">
           <Stack as="ul" gap={0.5} style={{ paddingLeft: 16, margin: 0, listStyle: 'disc' }}>
-            {Object.values(errors).map((err) => (
+            {Object.values(errors).map(err => (
               <Text key={err} as="li" variant="bodySmall">
                 {err}
               </Text>
@@ -89,7 +99,7 @@ export function ExportPanel({ state, status, errors, onGenerate, errorMessage }:
           background: '#f9f9fa',
         }}
       >
-        <Text as="h3" variant="headingXSmall">
+        <Text as="h3" variant="headingSmall">
           Export Preview
         </Text>
 
@@ -97,10 +107,7 @@ export function ExportPanel({ state, status, errors, onGenerate, errorMessage }:
           <SummaryRow label="Client" value={state.clientName || <em>not set</em>} />
           <SummaryRow label="Title" value={state.projectTitle || <em>not set</em>} />
           <SummaryRow label="Date" value={state.date || <em>not set</em>} />
-          <SummaryRow
-            label="Type"
-            value={state.deckType === 'proposal' ? 'Client Proposal' : 'Internal QBR'}
-          />
+          <SummaryRow label="Type" value={state.deckType === 'proposal' ? 'Client Proposal' : 'Internal QBR'} />
           <SummaryRow label="Slides" value={`${slideCount} slide${slideCount !== 1 ? 's' : ''}`} />
           <SummaryRow label="File" value={<code style={{ fontSize: 11 }}>{fileName}</code>} />
         </Stack>
@@ -124,13 +131,7 @@ export function ExportPanel({ state, status, errors, onGenerate, errorMessage }:
   )
 }
 
-function SummaryRow({
-  label,
-  value,
-}: {
-  label: string
-  value: React.ReactNode
-}) {
+function SummaryRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <Stack direction="row" gap={1} alignItems="baseline">
       <Text as="span" variant="bodySmall" prominence="weak" style={{ minWidth: 56 }}>

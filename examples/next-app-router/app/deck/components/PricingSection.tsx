@@ -5,16 +5,41 @@ import type { PricingRow } from '../types'
 
 function PlusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   )
 }
 
 function DeleteIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+      <path d="M10 11v6" />
+      <path d="M14 11v6" />
+      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
     </svg>
   )
 }
@@ -71,11 +96,11 @@ export function PricingSection({ rows, addPricingRow, updatePricingRow, removePr
         <EmptyState
           title="No pricing rows yet"
           description="Add your first service line to build the Investment Summary slide."
-          icon="product"
-          action={{
-            label: 'Add first line',
-            onClick: addPricingRow,
-          }}
+          primaryButton={
+            <Button variant="filled" sentiment="primary" onClick={addPricingRow}>
+              Add first line
+            </Button>
+          }
         />
       ) : (
         <Stack gap={0}>
@@ -144,7 +169,7 @@ export function PricingSection({ rows, addPricingRow, updatePricingRow, removePr
                     aria-label="Service name"
                     placeholder="e.g. Instance DEV1-M"
                     value={row.serviceName}
-                    onChange={(e) => updatePricingRow(row.id, 'serviceName', e.target.value)}
+                    onChange={e => updatePricingRow(row.id, 'serviceName', e.target.value)}
                     size="small"
                   />
                 </div>
@@ -154,7 +179,7 @@ export function PricingSection({ rows, addPricingRow, updatePricingRow, removePr
                     aria-label="Configuration"
                     placeholder="e.g. 2 vCPU, 4 GB"
                     value={row.configuration}
-                    onChange={(e) => updatePricingRow(row.id, 'configuration', e.target.value)}
+                    onChange={e => updatePricingRow(row.id, 'configuration', e.target.value)}
                     size="small"
                   />
                 </div>
@@ -164,9 +189,7 @@ export function PricingSection({ rows, addPricingRow, updatePricingRow, removePr
                     aria-label="Quantity"
                     value={parseFloat(row.quantity) || 1}
                     min={1}
-                    onChange={(val) =>
-                      updatePricingRow(row.id, 'quantity', String(val ?? 1))
-                    }
+                    onChange={val => updatePricingRow(row.id, 'quantity', String(val ?? 1))}
                     size="small"
                   />
                 </div>
@@ -177,9 +200,7 @@ export function PricingSection({ rows, addPricingRow, updatePricingRow, removePr
                     value={parseFloat(row.unitPrice) || 0}
                     min={0}
                     step={0.01}
-                    onChange={(val) =>
-                      updatePricingRow(row.id, 'unitPrice', String(val ?? 0))
-                    }
+                    onChange={val => updatePricingRow(row.id, 'unitPrice', String(val ?? 0))}
                     size="small"
                   />
                 </div>

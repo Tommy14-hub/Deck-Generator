@@ -144,6 +144,9 @@ importers:
       lint-staged:
         specifier: 17.0.8
         version: 17.0.8
+      next:
+        specifier: 16.2.10
+        version: 16.2.10(@babel/core@8.0.1)(@opentelemetry/api@1.9.1)(@playwright/test@1.61.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0)
       oxfmt:
         specifier: 0.57.0
         version: 0.57.0
