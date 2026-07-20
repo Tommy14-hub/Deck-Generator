@@ -32,16 +32,39 @@ function defaultToggles(deckType: DeckType): SlideToggles {
 
 function makeSamplePricingRows(): PricingRow[] {
   return [
-    { id: generateId(), serviceName: 'Instances (DEV1-M)', configuration: '2 vCPU, 4 GB RAM', quantity: '5', unitPrice: '13.99' },
-    { id: generateId(), serviceName: 'Managed Database (DB-DEV1-S)', configuration: 'PostgreSQL, 20 GB SSD', quantity: '2', unitPrice: '29.99' },
-    { id: generateId(), serviceName: 'Object Storage', configuration: '500 GB / month', quantity: '1', unitPrice: '11.75' },
+    {
+      id: generateId(),
+      serviceName: 'Instances (DEV1-M)',
+      configuration: '2 vCPU, 4 GB RAM',
+      quantity: '5',
+      unitPrice: '13.99',
+    },
+    {
+      id: generateId(),
+      serviceName: 'Managed Database (DB-DEV1-S)',
+      configuration: 'PostgreSQL, 20 GB SSD',
+      quantity: '2',
+      unitPrice: '29.99',
+    },
+    {
+      id: generateId(),
+      serviceName: 'Object Storage',
+      configuration: '500 GB / month',
+      quantity: '1',
+      unitPrice: '11.75',
+    },
   ]
 }
 
 function makeSampleUsagePoints(): UsageDataPoint[] {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
-  return months.flatMap((month) => [
-    { id: generateId(), month, metricLabel: 'Compute (vCPU-h)', value: String(Math.floor(Math.random() * 3000 + 4000)) },
+  return months.flatMap(month => [
+    {
+      id: generateId(),
+      month,
+      metricLabel: 'Compute (vCPU-h)',
+      value: String(Math.floor(Math.random() * 3000 + 4000)),
+    },
     { id: generateId(), month, metricLabel: 'Storage (GB)', value: String(Math.floor(Math.random() * 200 + 300)) },
   ])
 }
@@ -68,21 +91,21 @@ export function useFormState() {
   const [state, setState] = useState<DeckFormState>(INITIAL_STATE)
 
   // ---- General Info ----
-  const setClientName = useCallback((v: string) => setState((s) => ({ ...s, clientName: v })), [])
-  const setProjectTitle = useCallback((v: string) => setState((s) => ({ ...s, projectTitle: v })), [])
-  const setDate = useCallback((v: string) => setState((s) => ({ ...s, date: v })), [])
+  const setClientName = useCallback((v: string) => setState(s => ({ ...s, clientName: v })), [])
+  const setProjectTitle = useCallback((v: string) => setState(s => ({ ...s, projectTitle: v })), [])
+  const setDate = useCallback((v: string) => setState(s => ({ ...s, date: v })), [])
   const setDeckType = useCallback((v: DeckType) => {
-    setState((s) => ({ ...s, deckType: v, slides: defaultToggles(v) }))
+    setState(s => ({ ...s, deckType: v, slides: defaultToggles(v) }))
   }, [])
 
   // ---- Slide toggles ----
   const setSlideToggle = useCallback((key: keyof SlideToggles, value: boolean) => {
-    setState((s) => ({ ...s, slides: { ...s.slides, [key]: value } }))
+    setState(s => ({ ...s, slides: { ...s.slides, [key]: value } }))
   }, [])
 
   // ---- Pricing rows ----
   const addPricingRow = useCallback(() => {
-    setState((s) => ({
+    setState(s => ({
       ...s,
       pricingRows: [
         ...s.pricingRows,
@@ -92,46 +115,38 @@ export function useFormState() {
   }, [])
 
   const updatePricingRow = useCallback((id: string, field: keyof Omit<PricingRow, 'id'>, value: string) => {
-    setState((s) => ({
+    setState(s => ({
       ...s,
-      pricingRows: s.pricingRows.map((r) => (r.id === id ? { ...r, [field]: value } : r)),
+      pricingRows: s.pricingRows.map(r => (r.id === id ? { ...r, [field]: value } : r)),
     }))
   }, [])
 
   const removePricingRow = useCallback((id: string) => {
-    setState((s) => ({ ...s, pricingRows: s.pricingRows.filter((r) => r.id !== id) }))
+    setState(s => ({ ...s, pricingRows: s.pricingRows.filter(r => r.id !== id) }))
   }, [])
 
   // ---- Usage data points ----
   const addUsagePoint = useCallback(() => {
-    setState((s) => ({
+    setState(s => ({
       ...s,
-      usageDataPoints: [
-        ...s.usageDataPoints,
-        { id: generateId(), month: '', metricLabel: '', value: '0' },
-      ],
+      usageDataPoints: [...s.usageDataPoints, { id: generateId(), month: '', metricLabel: '', value: '0' }],
     }))
   }, [])
 
-  const updateUsagePoint = useCallback(
-    (id: string, field: keyof Omit<UsageDataPoint, 'id'>, value: string) => {
-      setState((s) => ({
-        ...s,
-        usageDataPoints: s.usageDataPoints.map((dp) =>
-          dp.id === id ? { ...dp, [field]: value } : dp,
-        ),
-      }))
-    },
-    [],
-  )
+  const updateUsagePoint = useCallback((id: string, field: keyof Omit<UsageDataPoint, 'id'>, value: string) => {
+    setState(s => ({
+      ...s,
+      usageDataPoints: s.usageDataPoints.map(dp => (dp.id === id ? { ...dp, [field]: value } : dp)),
+    }))
+  }, [])
 
   const removeUsagePoint = useCallback((id: string) => {
-    setState((s) => ({ ...s, usageDataPoints: s.usageDataPoints.filter((dp) => dp.id !== id) }))
+    setState(s => ({ ...s, usageDataPoints: s.usageDataPoints.filter(dp => dp.id !== id) }))
   }, [])
 
   // ---- Roadmap items ----
   const updateRoadmapItem = useCallback((idx: number, value: string) => {
-    setState((s) => {
+    setState(s => {
       const items = [...s.roadmapItems]
       items[idx] = value
       return { ...s, roadmapItems: items }
@@ -139,11 +154,11 @@ export function useFormState() {
   }, [])
 
   const addRoadmapItem = useCallback(() => {
-    setState((s) => ({ ...s, roadmapItems: [...s.roadmapItems, ''] }))
+    setState(s => ({ ...s, roadmapItems: [...s.roadmapItems, ''] }))
   }, [])
 
   const removeRoadmapItem = useCallback((idx: number) => {
-    setState((s) => ({ ...s, roadmapItems: s.roadmapItems.filter((_, i) => i !== idx) }))
+    setState(s => ({ ...s, roadmapItems: s.roadmapItems.filter((_, i) => i !== idx) }))
   }, [])
 
   return {

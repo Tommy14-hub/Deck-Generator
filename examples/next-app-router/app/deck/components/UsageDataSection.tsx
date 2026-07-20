@@ -5,16 +5,41 @@ import type { UsageDataPoint } from '../types'
 
 function PlusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   )
 }
 
 function DeleteIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+      <path d="M10 11v6" />
+      <path d="M14 11v6" />
+      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
     </svg>
   )
 }
@@ -80,11 +105,11 @@ export function UsageDataSection({
             <EmptyState
               title="No usage data yet"
               description="Add at least 3 data points to populate the chart slide."
-              icon="database"
-              action={{
-                label: 'Add first data point',
-                onClick: addUsagePoint,
-              }}
+              primaryButton={
+                <Button variant="filled" sentiment="primary" onClick={addUsagePoint}>
+                  Add first data point
+                </Button>
+              }
             />
           ) : (
             <Stack gap={0}>
@@ -138,7 +163,7 @@ export function UsageDataSection({
                         aria-label="Month"
                         placeholder="Jan"
                         value={dp.month}
-                        onChange={(e) => updateUsagePoint(dp.id, 'month', e.target.value)}
+                        onChange={e => updateUsagePoint(dp.id, 'month', e.target.value)}
                         size="small"
                       />
                     </div>
@@ -148,7 +173,7 @@ export function UsageDataSection({
                         aria-label="Metric label"
                         placeholder="Compute (vCPU-h)"
                         value={dp.metricLabel}
-                        onChange={(e) => updateUsagePoint(dp.id, 'metricLabel', e.target.value)}
+                        onChange={e => updateUsagePoint(dp.id, 'metricLabel', e.target.value)}
                         size="small"
                       />
                     </div>
@@ -158,9 +183,7 @@ export function UsageDataSection({
                         aria-label="Value"
                         value={parseFloat(dp.value) || 0}
                         min={0}
-                        onChange={(val) =>
-                          updateUsagePoint(dp.id, 'value', String(val ?? 0))
-                        }
+                        onChange={val => updateUsagePoint(dp.id, 'value', String(val ?? 0))}
                         size="small"
                       />
                     </div>
@@ -224,11 +247,11 @@ export function UsageDataSection({
             <EmptyState
               title="No roadmap items yet"
               description="Add action items or milestones for the next period."
-              icon="list"
-              action={{
-                label: 'Add first item',
-                onClick: addRoadmapItem,
-              }}
+              primaryButton={
+                <Button variant="filled" sentiment="primary" onClick={addRoadmapItem}>
+                  Add first item
+                </Button>
+              }
             />
           ) : (
             <Stack gap={1}>
@@ -257,7 +280,7 @@ export function UsageDataSection({
                       aria-label={`Roadmap item ${idx + 1}`}
                       placeholder="e.g. Kick-off workshop and architecture review"
                       value={item}
-                      onChange={(e) => updateRoadmapItem(idx, e.target.value)}
+                      onChange={e => updateRoadmapItem(idx, e.target.value)}
                     />
                   </div>
                   <Button

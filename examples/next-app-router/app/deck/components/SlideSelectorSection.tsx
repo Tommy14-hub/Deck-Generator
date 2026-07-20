@@ -44,8 +44,8 @@ type Props = {
 }
 
 export function SlideSelectorSection({ deckType, slides, setSlideToggle }: Props) {
-  const visibleSlides = SLIDE_DEFS.filter((s) => s.deckTypes.includes(deckType))
-  const enabledCount = visibleSlides.filter((s) => slides[s.key]).length
+  const visibleSlides = SLIDE_DEFS.filter(s => s.deckTypes.includes(deckType))
+  const enabledCount = visibleSlides.filter(s => slides[s.key]).length
   // Cover slide is always included
   const totalCount = enabledCount + 1
 
@@ -113,11 +113,7 @@ export function SlideSelectorSection({ deckType, slides, setSlideToggle }: Props
           >
             <Stack gap={0.5}>
               <Stack direction="row" gap={1} alignItems="center">
-                <Text
-                  as="span"
-                  variant="bodyStrong"
-                  sentiment={slides[slideDef.key] ? 'primary' : 'neutral'}
-                >
+                <Text as="span" variant="bodyStrong" sentiment={slides[slideDef.key] ? 'primary' : 'neutral'}>
                   {slideDef.label}
                 </Text>
                 <Badge sentiment="neutral" size="small">
@@ -130,7 +126,7 @@ export function SlideSelectorSection({ deckType, slides, setSlideToggle }: Props
             </Stack>
             <Toggle
               checked={slides[slideDef.key]}
-              onChange={(e) => setSlideToggle(slideDef.key, e.target.checked)}
+              onChange={e => setSlideToggle(slideDef.key, e.target.checked)}
               label={slideDef.label}
               aria-label={`Toggle ${slideDef.label} slide`}
             />
