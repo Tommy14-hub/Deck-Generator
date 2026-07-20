@@ -8,6 +8,7 @@
  * IMPORTANT: Uses pptx.write({ outputType: 'blob' }) — no Node fs access.
  */
 
+import type { DeckFormState } from '../../types'
 import {
   buildCoverSlide,
   buildPricingSlide,
@@ -17,7 +18,6 @@ import {
 } from './builders'
 import { theme as defaultTheme } from './theme'
 import type { PptxTheme } from './theme'
-import type { DeckFormState } from '../../types'
 
 /**
  * Defensive, generator-level validation. The UI already blocks the "Generate"
@@ -40,10 +40,7 @@ function assertValidState(state: DeckFormState): void {
   }
 }
 
-export async function generateDeck(
-  state: DeckFormState,
-  theme: PptxTheme = defaultTheme,
-): Promise<void> {
+export async function generateDeck(state: DeckFormState, theme: PptxTheme = defaultTheme): Promise<void> {
   assertValidState(state)
 
   // Dynamic import keeps pptxgenjs out of the SSR bundle

@@ -6,20 +6,16 @@
  */
 
 import type PptxGenJS from 'pptxgenjs'
+import type { UsageDataPoint } from '../../../types'
 import { addFooter, addSlideHeader, setLightBackground } from '../chrome'
 import type { PptxTheme } from '../theme'
-import type { UsageDataPoint } from '../../../types'
 
 export interface UsageChartSlideData {
   dataPoints: UsageDataPoint[]
   date: string
 }
 
-export function buildUsageChartSlide(
-  pptx: PptxGenJS,
-  data: UsageChartSlideData,
-  theme: PptxTheme,
-) {
+export function buildUsageChartSlide(pptx: PptxGenJS, data: UsageChartSlideData, theme: PptxTheme) {
   const slide = pptx.addSlide()
   setLightBackground(slide, theme)
   addSlideHeader(slide, 'Usage & Consumption Overview', theme)
@@ -57,7 +53,7 @@ export function buildUsageChartSlide(
   }
 
   // Preserve first-seen month order rather than re-sorting alphabetically
-  const allMonths = [...new Set(data.dataPoints.map((dp) => dp.month))]
+  const allMonths = [...new Set(data.dataPoints.map(dp => dp.month))]
 
   const seriesColors = [
     theme.colors.chart.data1,
@@ -69,19 +65,18 @@ export function buildUsageChartSlide(
   ]
 
   const chartData = [...seriesMap.entries()].map(([label, points]) => {
-    const valueMap = new Map(points.map((p) => [p.month, p.value]))
+    const valueMap = new Map(points.map(p => [p.month, p.value]))
     return {
       name: label,
       labels: allMonths,
-      values: allMonths.map((m) => valueMap.get(m) ?? 0),
+      values: allMonths.map(m => valueMap.get(m) ?? 0),
     }
   })
 
   // A trend line only makes sense with >=3 points on the timeline; a single
   // metric tracked over time reads as a trend, several metrics read better
   // as grouped bars for direct comparison.
-  const chartType: 'line' | 'bar' =
-    allMonths.length >= 3 && chartData.length <= 2 ? 'line' : 'bar'
+  const chartType: 'line' | 'bar' = allMonths.length >= 3 && chartData.length <= 2 ? 'line' : 'bar'
 
   slide.addChart(chartType, chartData, {
     x: chartX,
@@ -107,8 +102,6 @@ export function buildUsageChartSlide(
     valAxisTitleFontFace: theme.fonts.heading,
     valAxisTitleColor: theme.colors.neutral.textStrong,
     dataLabelFontFace: theme.fonts.body,
-    ...(chartType === 'line'
-      ? { lineDataSymbol: 'circle', lineSize: 2 }
-      : { barGapWidthPct: 35 }),
+    ...(chartType === 'line' ? { lineDataSymbol: 'circle', lineSize: 2 } : { barGapWidthPct: 35 }),
   })
 }

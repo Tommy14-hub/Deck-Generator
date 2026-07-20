@@ -30,7 +30,7 @@ function validate(state: ReturnType<typeof useFormState>['state']): ValidationEr
     if (state.pricingRows.length === 0) {
       errors.pricing = 'Investment Summary is enabled but no pricing rows are defined.'
     } else {
-      const invalid = state.pricingRows.some((r) => {
+      const invalid = state.pricingRows.some(r => {
         const qty = parseFloat(r.quantity)
         const price = parseFloat(r.unitPrice)
         return isNaN(qty) || qty < 1 || isNaN(price) || price < 0 || !r.serviceName.trim()
@@ -47,7 +47,7 @@ function validate(state: ReturnType<typeof useFormState>['state']): ValidationEr
       errors.usage = 'Usage & Consumption slide requires at least 3 data points.'
     }
     const invalid = state.usageDataPoints.some(
-      (dp) => !dp.month.trim() || !dp.metricLabel.trim() || isNaN(parseFloat(dp.value)),
+      dp => !dp.month.trim() || !dp.metricLabel.trim() || isNaN(parseFloat(dp.value)),
     )
     if (invalid) {
       errors.usage = 'One or more usage data points are incomplete. Fill in all fields.'
@@ -83,9 +83,7 @@ export function DeckGenerator() {
     } catch (err) {
       console.error('[DeckGenerator] generation failed:', err)
       setStatus('error')
-      setErrorMessage(
-        err instanceof Error ? err.message : 'An unexpected error occurred during generation.',
-      )
+      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred during generation.')
     }
   }
 
@@ -123,8 +121,7 @@ export function DeckGenerator() {
               Scaleway Deck Generator
             </Text>
             <Text as="p" variant="body" prominence="weak">
-              Build a client proposal or internal QBR presentation and export it as a PowerPoint
-              file.
+              Build a client proposal or internal QBR presentation and export it as a PowerPoint file.
             </Text>
           </Stack>
 
@@ -134,9 +131,7 @@ export function DeckGenerator() {
           <Tabs selected={activeTab} onChange={setActiveTab}>
             <Tabs.Tab value="general">1. General Info</Tabs.Tab>
             <Tabs.Tab value="slides">2. Slides</Tabs.Tab>
-            {(showPricing || showUsage || showRoadmap) && (
-              <Tabs.Tab value="data">3. Data</Tabs.Tab>
-            )}
+            {(showPricing || showUsage || showRoadmap) && <Tabs.Tab value="data">3. Data</Tabs.Tab>}
           </Tabs>
 
           {/* Tab panel content rendered separately to avoid nested <button> */}

@@ -5,10 +5,10 @@
  */
 
 import type PptxGenJS from 'pptxgenjs'
+import type { PricingRow } from '../../../types'
 import { addFooter, addSlideHeader, setLightBackground } from '../chrome'
 import { formatEur, truncate } from '../format'
 import type { PptxTheme } from '../theme'
-import type { PricingRow } from '../../../types'
 
 export interface PricingSlideData {
   rows: PricingRow[]
@@ -26,7 +26,7 @@ const MIN_COL_WIDTHS = [1.6, 1.4, 0.7, 1.1, 1.1]
  */
 function computeColumnWidths(rows: PricingRow[], totalWidth: number): number[] {
   const maxLengths = COLUMN_HEADERS.map((header, i) => {
-    const cellLengths = rows.map((r) => {
+    const cellLengths = rows.map(r => {
       const value = [r.serviceName, r.configuration, r.quantity, r.unitPrice, r.unitPrice][i]
       return Math.min(value?.length ?? 0, MAX_CELL_LENGTH)
     })
@@ -95,8 +95,7 @@ export function buildPricingSlide(pptx: PptxGenJS, data: PricingSlideData, theme
     const qty = parseFloat(r.quantity) || 0
     const price = parseFloat(r.unitPrice) || 0
     const subtotal = qty * price
-    const bg =
-      idx % 2 === 0 ? theme.colors.neutral.background : theme.colors.neutral.backgroundWeak
+    const bg = idx % 2 === 0 ? theme.colors.neutral.background : theme.colors.neutral.backgroundWeak
     return [
       {
         text: truncate(r.serviceName, MAX_CELL_LENGTH),

@@ -90,7 +90,7 @@ export function buildRisksSlide(pptx: PptxGenJS, data: RisksSlideData, theme: Pp
     })
 
     // Bullet points
-    const bullets = col.points.map((p) => ({
+    const bullets = col.points.map(p => ({
       text: p,
       options: { bullet: { type: 'bullet' as const }, breakLine: true },
     }))

@@ -17,7 +17,7 @@ export function buildRoadmapSlide(pptx: PptxGenJS, data: RoadmapSlideData, theme
   addSlideHeader(slide, 'Roadmap / Next Steps', theme)
   addFooter(slide, data.date, theme)
 
-  const items = data.items.filter((item) => item.trim().length > 0)
+  const items = data.items.filter(item => item.trim().length > 0)
 
   if (items.length === 0) {
     slide.addText('No roadmap items defined.', {
@@ -36,7 +36,7 @@ export function buildRoadmapSlide(pptx: PptxGenJS, data: RoadmapSlideData, theme
   // Long lists get a smaller font so they still fit within the slide body
   const fontSize = items.length > 8 ? 12 : 14
 
-  const bullets = items.map((item) => ({
+  const bullets = items.map(item => ({
     text: item,
     options: {
       bullet: { code: '2714', color: theme.colors.primary.backgroundStrong },
