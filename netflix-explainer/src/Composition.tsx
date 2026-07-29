@@ -10,6 +10,7 @@ import { S07_OpenConnect } from "./deep/scenes/S07_OpenConnect";
 import { S08_Playback } from "./deep/scenes/S08_Playback";
 import { S09_Resilience } from "./deep/scenes/S09_Resilience";
 import { NetflixExplainer } from "./scenes/NetflixExplainer";
+import { NetflixArch } from "./arch/NetflixArch";
 import { VoxNetflix } from "./vox/VoxNetflix";
 import { V01_Hook } from "./vox/scenes/V01_Hook";
 import { V02_Scale } from "./vox/scenes/V02_Scale";
@@ -23,6 +24,15 @@ import { V08_Outro } from "./vox/scenes/V08_Outro";
 export const MyComposition = () => {
   return (
     <>
+      <Composition
+        component={NetflixArch}
+        durationInFrames={2700}
+        fps={30}
+        height={1920}
+        id="NetflixArch"
+        width={1080}
+      />
+
       <Composition
         component={VoxNetflix}
         durationInFrames={2700}
