@@ -1,17 +1,12 @@
-import { loadFont } from "@remotion/fonts";
-import { staticFile } from "remotion";
-
 export const DISPLAY = "Archivo Black";
 export const SANS = "Inter";
 export const MONO = "JetBrains Mono";
 
 /**
- * Fonts ship with the project: the render browser has no outbound network, so
- * anything fetched from Google Fonts fails at render time.
+ * Faces are declared in src/fonts.css as base64 data URIs, imported by Root.
+ * Nothing is fetched at render time, so no font can hold a delayRender handle
+ * open — see scripts/build-fonts.ts for why that mattered.
  */
-loadFont({ family: DISPLAY, url: staticFile("fonts/ArchivoBlack.woff2"), weight: "400" });
-loadFont({ family: SANS, url: staticFile("fonts/Inter.woff2"), weight: "100 900" });
-loadFont({ family: MONO, url: staticFile("fonts/JetBrainsMono.woff2"), weight: "100 800" });
 
 /**
  * Scaleway Ultraviolet — console *light* theme.

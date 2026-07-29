@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import "./index.css";
+import "./fonts.css";
 import { ChatGPTInfra } from "./ChatGPTInfra";
 import { DURATION, FPS } from "./config/scenario";
 import { FRAME } from "./design/theme";
