@@ -9,8 +9,8 @@
  */
 export const FPS = 30;
 
-/** 1800 = 60 s (header). Set to 3600 for the 120 s cut the storyboard implies. */
-export const DURATION = 1800;
+/** 3600 = 120 s — the four 30 s stages the storyboard describes. */
+export const DURATION = 3600;
 
 export type StageId = "boot" | "pcie" | "sxm" | "inference";
 

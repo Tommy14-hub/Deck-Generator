@@ -1,16 +1,50 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { CameraController } from "./camera/CameraController";
+import { InfiniteCanvas, Zone } from "./camera/InfiniteCanvas";
 import { HUDStack, MetricsHUD } from "./components/MetricsHUD";
-import { METRICS, stageProgress } from "./config/scenario";
+import { DURATION, METRICS, STAGES, STAGE_RANGES, ZONES, stageProgress } from "./config/scenario";
 import { DISPLAY, MONO, UV } from "./design/theme";
 
-/**
- * Film shell.
- *
- * Step 1 of the build: the stage, the parametric clock and the HUD are wired
- * together and rendering. <InfiniteCanvas> and <CameraController> drop in here
- * next — the world will mount inside this component and the HUD stays outside
- * the camera transform.
- */
+/** Blockout marker — stands in for a subject until its component lands. */
+const Placeholder: React.FC<{
+  readonly name: string;
+  readonly w?: number;
+  readonly h?: number;
+  readonly accent?: string;
+}> = ({ name, w = 460, h = 320, accent = UV.primary }) => (
+  <div
+    style={{
+      width: w,
+      height: h,
+      borderRadius: 22,
+      border: `3px dashed ${accent}66`,
+      backgroundColor: `${accent}0D`,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 10,
+    }}
+  >
+    <div style={{ fontFamily: DISPLAY, fontSize: 34, color: accent, letterSpacing: -0.5 }}>
+      {name}
+    </div>
+    <div style={{ fontFamily: MONO, fontSize: 18, color: UV.inkFaint }}>à venir</div>
+  </div>
+);
+
+const MARKERS = [
+  { key: "objectStorage", name: "Object Storage", accent: UV.primary, w: 520, h: 420 },
+  { key: "nvme", name: "NVMe · Block Storage", accent: UV.primary, w: 520, h: 300 },
+  { key: "systemRam", name: "System RAM", accent: UV.success, w: 420, h: 260 },
+  { key: "pcieBus", name: "PCIe Gen 4.0", accent: UV.info, w: 380, h: 200 },
+  { key: "gpuDie", name: "GPU · H100", accent: UV.info, w: 420, h: 300 },
+  { key: "vramMap", name: "VRAM Allocation", accent: UV.info, w: 480, h: 260 },
+  { key: "sxmBoard", name: "SXM · 8 GPUs", accent: UV.warningInk, w: 900, h: 620 },
+  { key: "requests", name: "Requêtes", accent: UV.danger, w: 380, h: 240 },
+  { key: "kvCache", name: "PagedAttention · KV", accent: UV.cyan, w: 520, h: 340 },
+] as const;
+
 export const ChatGPTInfra: React.FC = () => {
   const frame = useCurrentFrame();
 
@@ -21,64 +55,26 @@ export const ChatGPTInfra: React.FC = () => {
     METRICS.cpuIdlePct +
     Math.min(1, boot * 1.4) * (METRICS.cpuDecodePct - METRICS.cpuIdlePct);
 
+  const active =
+    STAGES.find((s) => frame < STAGE_RANGES[s.id].end) ?? STAGES[STAGES.length - 1];
+
   return (
-    <AbsoluteFill style={{ backgroundColor: UV.bgSoft, overflow: "hidden" }}>
-      {/* Blueprint grid — stands in for the canvas until it mounts. */}
-      <AbsoluteFill
-        style={{
-          backgroundImage: `linear-gradient(${UV.borderSoft} 1px, transparent 1px), linear-gradient(90deg, ${UV.borderSoft} 1px, transparent 1px)`,
-          backgroundSize: "80px 80px",
-        }}
-      />
+    <AbsoluteFill style={{ backgroundColor: UV.bgSoft }}>
+      <CameraController>
+        <InfiniteCanvas>
+          {MARKERS.map((m) => {
+            const pos = ZONES[m.key];
 
-      <AbsoluteFill
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 18,
-          paddingLeft: 80,
-          paddingRight: 80,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: MONO,
-            fontSize: 22,
-            letterSpacing: 3,
-            textTransform: "uppercase",
-            color: UV.primary,
-            fontWeight: 700,
-          }}
-        >
-          étape 01 · {Math.round(boot * 100)} %
-        </div>
-        <div
-          style={{
-            fontFamily: DISPLAY,
-            fontSize: 64,
-            letterSpacing: -2,
-            color: UV.ink,
-            textAlign: "center",
-            lineHeight: 1.05,
-          }}
-        >
-          Chargement
-          <br />
-          des poids
-        </div>
-        <div
-          style={{
-            fontFamily: MONO,
-            fontSize: 20,
-            color: UV.inkFaint,
-            textAlign: "center",
-            marginTop: 8,
-          }}
-        >
-          canvas + caméra : prochaine étape
-        </div>
-      </AbsoluteFill>
+            return (
+              <Zone key={m.key} x={pos.x} y={pos.y}>
+                <Placeholder accent={m.accent} h={m.h} name={m.name} w={m.w} />
+              </Zone>
+            );
+          })}
+        </InfiniteCanvas>
+      </CameraController>
 
+      {/* Instruments live outside the transform so they stay frame-fixed. */}
       <HUDStack>
         <MetricsHUD
           ceiling={`/ ${METRICS.weightsGb} GB`}
@@ -105,6 +101,55 @@ export const ChatGPTInfra: React.FC = () => {
           value={ram}
         />
       </HUDStack>
+
+      {/* Timeline strip: which stage the camera is currently over. */}
+      <div
+        style={{
+          position: "absolute",
+          left: 56,
+          right: 56,
+          bottom: 74,
+          display: "flex",
+          gap: 10,
+        }}
+      >
+        {STAGES.map((s) => {
+          const on = s.id === active.id;
+
+          return (
+            <div key={s.id} style={{ flex: 1 }}>
+              <div
+                style={{
+                  height: 6,
+                  borderRadius: 3,
+                  backgroundColor: on ? UV.primary : UV.bgStrong,
+                }}
+              />
+              <div
+                style={{
+                  marginTop: 8,
+                  fontFamily: MONO,
+                  fontSize: 15,
+                  color: on ? UV.primary : UV.inkFaint,
+                  fontWeight: on ? 700 : 400,
+                }}
+              >
+                {s.label}
+              </div>
+            </div>
+          );
+        })}
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: 15,
+            color: UV.inkFaint,
+            alignSelf: "flex-end",
+          }}
+        >
+          {Math.round((frame / DURATION) * 100)} %
+        </div>
+      </div>
     </AbsoluteFill>
   );
 };
