@@ -19,7 +19,7 @@ const SEQ_COLORS = [UV.cyan, UV.primary, UV.success, UV.danger];
  * logical position to physical page. Shuffling with a fixed LCG makes that
  * visible — blocks of one colour land all over the grid instead of in a run.
  */
-const SCATTER = (() => {
+const PAGE_RANK = (() => {
   const order = Array.from({ length: PAGES }, (_, i) => i);
   let seed = 987654321;
 
@@ -29,7 +29,14 @@ const SCATTER = (() => {
     [order[i], order[j]] = [order[j], order[i]];
   }
 
-  return order;
+  // Invert once: rank[physicalPage] = allocation step. Looking this up with
+  // indexOf inside the cell loop was ~95k scans per frame, every frame.
+  const rank = new Array<number>(PAGES);
+  order.forEach((cell, step) => {
+    rank[cell] = step;
+  });
+
+  return rank;
 })();
 
 export const PagedAttention: React.FC = () => {
@@ -140,7 +147,7 @@ export const PagedAttention: React.FC = () => {
           >
             {Array.from({ length: PAGES }, (_, cell) => {
               // Which allocation step claimed this physical page, if any.
-              const rank = SCATTER.indexOf(cell);
+              const rank = PAGE_RANK[cell];
               const claimed = rank < allocated;
               const seq = rank % SEQ_COLORS.length;
               const justClaimed = claimed && rank > allocated - 6;

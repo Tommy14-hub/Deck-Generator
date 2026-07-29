@@ -167,19 +167,34 @@ const StageInstruments: React.FC<{ readonly stage: StageId }> = ({ stage }) => {
   );
 };
 
+/** Subjects in canvas order — the same order the camera visits them. */
+const ZONE_COMPONENTS = [
+  { id: "boot", Component: StorageNode },
+  { id: "pcie", Component: PCIeBus },
+  { id: "sxm", Component: SXMCluster },
+  { id: "inference", Component: PagedAttention },
+] as const;
+
 export const ChatGPTInfra: React.FC = () => {
   const frame = useCurrentFrame();
-  const active =
-    STAGES.find((s) => frame < STAGE_RANGES[s.id].end) ?? STAGES[STAGES.length - 1];
+  const activeIndex = Math.max(
+    0,
+    STAGES.findIndex((s) => frame < STAGE_RANGES[s.id].end),
+  );
+  const active = STAGES[activeIndex] ?? STAGES[STAGES.length - 1];
 
   return (
     <AbsoluteFill style={{ backgroundColor: UV.bgSoft }}>
       <CameraController>
         <InfiniteCanvas>
-          <StorageNode />
-          <PCIeBus />
-          <SXMCluster />
-          <PagedAttention />
+          {/* Culling. Every subject used to stay mounted for all 3600 frames,
+              so the DOM carried the whole 5000x5000 world even while the camera
+              was three zones away — enough growth to stall a render tab. Each
+              zone now mounts only for its own stage plus one either side, which
+              still covers every transition the camera actually flies through. */}
+          {ZONE_COMPONENTS.map(({ id, Component }, i) =>
+            Math.abs(i - activeIndex) <= 1 ? <Component key={id} /> : null,
+          )}
         </InfiniteCanvas>
       </CameraController>
 
