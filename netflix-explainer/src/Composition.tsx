@@ -10,10 +10,95 @@ import { S07_OpenConnect } from "./deep/scenes/S07_OpenConnect";
 import { S08_Playback } from "./deep/scenes/S08_Playback";
 import { S09_Resilience } from "./deep/scenes/S09_Resilience";
 import { NetflixExplainer } from "./scenes/NetflixExplainer";
+import { VoxNetflix } from "./vox/VoxNetflix";
+import { V01_Hook } from "./vox/scenes/V01_Hook";
+import { V02_Scale } from "./vox/scenes/V02_Scale";
+import { V03_Problem } from "./vox/scenes/V03_Problem";
+import { V04_Split } from "./vox/scenes/V04_Split";
+import { V05_Map } from "./vox/scenes/V05_Map";
+import { V06_NightFill } from "./vox/scenes/V06_NightFill";
+import { V07_Payoff } from "./vox/scenes/V07_Payoff";
+import { V08_Outro } from "./vox/scenes/V08_Outro";
 
 export const MyComposition = () => {
   return (
     <>
+      <Composition
+        component={VoxNetflix}
+        durationInFrames={2700}
+        fps={30}
+        height={1920}
+        id="VoxNetflix"
+        width={1080}
+      />
+
+      <Folder name="Vox-Scenes">
+        <Composition
+          component={V01_Hook}
+          durationInFrames={210}
+          fps={30}
+          height={1920}
+          id="V01-Accroche"
+          width={1080}
+        />
+        <Composition
+          component={V02_Scale}
+          durationInFrames={390}
+          fps={30}
+          height={1920}
+          id="V02-Echelle"
+          width={1080}
+        />
+        <Composition
+          component={V03_Problem}
+          durationInFrames={150}
+          fps={30}
+          height={1920}
+          id="V03-Probleme"
+          width={1080}
+        />
+        <Composition
+          component={V04_Split}
+          durationInFrames={450}
+          fps={30}
+          height={1920}
+          id="V04-Coupure"
+          width={1080}
+        />
+        <Composition
+          component={V05_Map}
+          durationInFrames={540}
+          fps={30}
+          height={1920}
+          id="V05-Carte"
+          width={1080}
+        />
+        <Composition
+          component={V06_NightFill}
+          durationInFrames={360}
+          fps={30}
+          height={1920}
+          id="V06-Nuit"
+          width={1080}
+        />
+        <Composition
+          component={V07_Payoff}
+          durationInFrames={300}
+          fps={30}
+          height={1920}
+          id="V07-Chute"
+          width={1080}
+        />
+        <Composition
+          component={V08_Outro}
+          durationInFrames={300}
+          fps={30}
+          height={1920}
+          id="V08-Outro"
+          width={1080}
+        />
+      </Folder>
+
       <Composition
         component={NetflixDeepDive}
         durationInFrames={2700}
